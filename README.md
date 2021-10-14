@@ -10,3 +10,8 @@ This repo closely mimics the coding style found in this tutorial: https://www.co
 - Classes are in UpperCamelCase. MyClass
 - Class items are appended to their associated class name with two underscores. MyClass__class_item
 - Private class items are denoted by a leading underscore _MyClass__class_item
+- Any preproccessor variables  should be defines in UPPERCASE.
+
+## File Organization
+
+To organize our code, please make files that group functions into categories based on their function. For example, any functions that drive stepper motors should be put in a file that is seperate from functions that drive servos and so on. 
