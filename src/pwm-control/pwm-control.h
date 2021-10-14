@@ -1,6 +1,4 @@
-#include<xc.h>
-
-
+#include <xc.h>
 
 void setupPWM14(int dutyCycle, int period)
 {

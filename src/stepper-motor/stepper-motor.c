@@ -1,4 +1,4 @@
-#include "stepper-motor.h"
+#include "stepper-motor/stepper-motor.h"
 
 void StepperMotor__init() {
     // Configure motor 1 using OC1
