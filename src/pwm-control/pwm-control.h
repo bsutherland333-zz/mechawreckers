@@ -1,29 +1,22 @@
-<<<<<<< HEAD
 /* Adam Welker  MEEN 330   Oct. 2021
  * 
  * pwm-control  -- a library to control the various PWM pins on the PIC24 
  */
 
+#ifndef PWM_CONTROL_H_
+#define PWM_CONTROL_H_
 
-=======
-#include <xc.h>
->>>>>>> 90ee1555c1b515da587d7fcd5bc36f96293a6431
+void PWMControl__init1(int duty_cycle, int period);
+void PWMControl__init2(int duty_cycle, int period);
+void PWMControl__init3(int duty_cycle, int period);
 
-#ifndef PWM_CONTROL
-#define PWM_CONTROL
+void PWMControl__setInterrupt1(int num_cycles);
+int PWMControl__getInterruptState1();
 
-#include<xc.h>
+void PWMControl__setInterrupt2(int num_cycles);
+int PWMControl__getInterruptState2();
 
-// Sets up PWM signal on pin 14 given a duty cycle and 
-// a period. Does not change the system ocillator
-void setupPWM14(int dutyCyCONTROcle, int period);
-
-
-
-void setupPWM4(int dutyCycle, int period);
-
-
-void setupPWM5(int dutyCycle, int period);
-
+void PWMControl__setInterrupt3(int num_cycles);
+int PWMControl__getInterruptState3();
 
 #endif

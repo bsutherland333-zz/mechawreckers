@@ -2,8 +2,7 @@
 
 #include "drive-control/drive-control.h"
 
-// Oscillator
-#pragma config FNOSC = FRC
+#pragma config FNOSC = FRC  // Update value in global-params if changed
 
 int main(int argc, char** argv) {
     // Sets all pin registers to 0
@@ -13,10 +12,12 @@ int main(int argc, char** argv) {
     ANSB = 0;
 
     StepperMotor__init();
-    StepperMotor__set_direction(1, 0);
-    StepperMotor__set_direction(1, 0);
-    StepperMotor__rotate(1, 3);
-
+    StepperMotor__rotate(2, 1, 0.25, 0.5);
+    StepperMotor__rotate(1, 0, 0.5, 1);
+    StepperMotor__completeRotations();
+    StepperMotor__rotate(2, 1, 0.5, 0);
+    
+    while (1);
     return 0;
 }
 

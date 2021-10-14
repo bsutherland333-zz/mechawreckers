@@ -1,20 +1,15 @@
-#include"pwm-control.h"
+#include "pwm-control/pwm-control.h"
 
-void setupPWM14(int dutyCyCONTROcle, int period)
-{
-    //-----------------------------------------------------------
+#include <xc.h>
+
+#include "global-params.h"
+
+void PWMControl__init1(int duty_cycle, int period) {
     // CONFIGURE PWM1 USING OC1 (on pin 14)
     
-    
-
-    _TRISA6 = 1;
-    
-    
     // Set period and duty cycle
-    // CHOOSE PERIOD AND DUTY CYCLE HERE
-    
     OC1RS = period;
-    OC1R = dutyCycle;
+    OC1R = duty_cycle;
 
     // Clear control bits
     OC1CON1 = 0;
@@ -52,21 +47,13 @@ void setupPWM14(int dutyCyCONTROcle, int period)
     OC1CON1bits.OCM = 0b110;    // Edge-aligned PWM mode
 }
 
-
-void setupPWM4(int dutyCycle, int period)
-{
-    //-----------------------------------------------------------
-    // CONFIGURE PWM1 USING OC1 (on pin 14)
-    
-
+void PWMControl__init2(int duty_cycle, int period) {
+    // CONFIGURE PWM2 USING OC2 (on pin 4)
     _TRISB0 = 1;
     
-    
     // Set period and duty cycle
-    // CHOOSE PERIOD AND DUTY CYCLE HERE
-    
     OC2RS = period;
-    OC2R = dutyCycle;
+    OC2R = duty_cycle;
 
     // Clear control bits
     OC2CON1 = 0;
@@ -104,20 +91,13 @@ void setupPWM4(int dutyCycle, int period)
     OC2CON1bits.OCM = 0b110;    // Edge-aligned PWM mode
 }
 
-void setupPWM5(int dutyCycle, int period)
-{
-    //-----------------------------------------------------------
-    // CONFIGURE PWM1 USING OC1 (on pin 14)
+void PWMControl__init3(int duty_cycle, int period) {
+    // CONFIGURE PWM3 USING OC3 (on pin 5)
+        _TRISB1 = 1;
     
-
-    _TRISB1 = 1;
-    
-    
-    // Set period and duty cycle
-    // CHOOSE PERIOD AND DUTY CYCLE HERE
-    
+    // Set period and duty cycle    
     OC3RS = period;
-    OC3R = dutyCycle;
+    OC3R = duty_cycle;
 
     // Clear control bits
     OC3CON1 = 0;
@@ -153,4 +133,97 @@ void setupPWM5(int dutyCycle, int period)
                                 // over to 0x0000 on the next positive edge of
                                 // the selected clock." - Section 3.3.7
     OC3CON1bits.OCM = 0b110;    // Edge-aligned PWM mode
+}
+
+// -----------------------------------------------------------------------------
+
+int _PWMControl__interruptRunning1 = 0;
+int _PWMControl__interruptCycles1 = 0;
+int _PWMControl__interruptCurrCycles1 = 0;
+void __attribute__((interrupt, no_auto_psv)) _OC1Interrupt(void) {
+    // Set interrupt flag to 0
+    _OC1IF = 0;
+    
+    if (_PWMControl__interruptCurrCycles1 < _PWMControl__interruptCycles1) {
+        _PWMControl__interruptCurrCycles1++;
+        _PWMControl__interruptRunning1 = 1;
+    } else {
+        _PWMControl__interruptRunning1 = 0;
+        _OC1IE = 0;     // Disable OC1 interrupt
+    }
+    
+}
+void PWMControl__setInterrupt1(int num_cycles) {
+    _PWMControl__interruptRunning1 = 1;
+    _PWMControl__interruptCycles1 = num_cycles;
+    _PWMControl__interruptCurrCycles1 = 0;
+    
+    _OC1IP = 4;     // Select OC1 interrupt priority
+    _OC1IE = 1;     // Enable OC1 interrupt
+    _OC1IF = 0;     // Clear OC1 interrupt flag
+}
+int PWMControl__getInterruptState1() {
+    return _PWMControl__interruptRunning1;
+}
+
+
+
+int _PWMControl__interruptRunning2 = 0;
+int _PWMControl__interruptCycles2 = 0;
+int _PWMControl__interruptCurrCycles2 = 0;
+void __attribute__((interrupt, no_auto_psv)) _OC2Interrupt(void) {
+    // Set interrupt flag to 0
+    _OC2IF = 0;
+    
+    if (_PWMControl__interruptCurrCycles2 < _PWMControl__interruptCycles2) {
+        _PWMControl__interruptCurrCycles2++;
+        _PWMControl__interruptRunning2 = 1;
+    } else {
+        _PWMControl__interruptRunning2 = 0;
+        _OC2IE = 0;     // Disable OC2 interrupt
+    }
+    
+}
+void PWMControl__setInterrupt2(int num_cycles) {
+    _PWMControl__interruptRunning2 = 1;
+    _PWMControl__interruptCycles2 = num_cycles;
+    _PWMControl__interruptCurrCycles2 = 0;
+    
+    _OC2IP = 4;     // Select OC2 interrupt priority
+    _OC2IE = 1;     // Enable OC2 interrupt
+    _OC2IF = 0;     // Clear OC2 interrupt flag
+}
+int PWMControl__getInterruptState2() {
+    return _PWMControl__interruptRunning2;
+}
+
+
+
+int _PWMControl__interruptRunning3 = 0;
+int _PWMControl__interruptCycles3 = 0;
+int _PWMControl__interruptCurrCycles3 = 0;
+void __attribute__((interrupt, no_auto_psv)) _OC3Interrupt(void) {
+    // Set interrupt flag to 0
+    _OC3IF = 0;
+    
+    if (_PWMControl__interruptCurrCycles3 < _PWMControl__interruptCycles3) {
+        _PWMControl__interruptCurrCycles3++;
+        _PWMControl__interruptRunning3 = 1;
+    } else {
+        _PWMControl__interruptRunning3 = 0;
+        _OC3IE = 0;     // Disable OC3 interrupt
+    }
+    
+}
+void PWMControl__setInterrupt3(int num_cycles) {
+    _PWMControl__interruptRunning3 = 1;
+    _PWMControl__interruptCycles3 = num_cycles;
+    _PWMControl__interruptCurrCycles3 = 0;
+    
+    _OC3IP = 4;     // Select OC3 interrupt priority
+    _OC3IE = 1;     // Enable OC3 interrupt
+    _OC3IF = 0;     // Clear OC3 interrupt flag
+}
+int PWMControl__getInterruptState3() {
+    return _PWMControl__interruptRunning3;
 }
