@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 /* Adam Welker  MEEN 330   Oct. 2021
  * 
  * pwm-control  -- a library to control the various PWM pins on the PIC24 
  */
 
 
+=======
+#include <xc.h>
+>>>>>>> 90ee1555c1b515da587d7fcd5bc36f96293a6431
 
 #ifndef PWM_CONTROL
 #define PWM_CONTROL

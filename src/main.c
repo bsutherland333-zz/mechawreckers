@@ -1,6 +1,6 @@
 #include <xc.h>
 
-#include "drive-control.h"
+#include "drive-control/drive-control.h"
 
 // Oscillator
 #pragma config FNOSC = FRC

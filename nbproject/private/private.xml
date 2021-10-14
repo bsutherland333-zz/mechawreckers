@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/brandon/projects/mechawreckers/src/drive-control/drive-control.h</file>
+            <file>file:/home/brandon/projects/mechawreckers/src/pwm-control/pwm-control.c</file>
             <file>file:/home/brandon/projects/mechawreckers/src/main.c</file>
+            <file>file:/home/brandon/projects/mechawreckers/src/stepper-motor/stepper-motor.c</file>
+            <file>file:/home/brandon/projects/mechawreckers/src/drive-control/drive-control.c</file>
+            <file>file:/home/brandon/projects/mechawreckers/src/pwm-control/pwm-control.h</file>
         </group>
     </open-files>
 </project-private>
