@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c src/drive-control.c src/stepper-motor.c
+SOURCEFILES_QUOTED_IF_SPACED=src/main.c src/drive-control/drive-control.c src/pwm-control/pwm-control.c src/stepper-motor/stepper-motor.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/src/drive-control.o ${OBJECTDIR}/src/stepper-motor.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/src/drive-control.o.d ${OBJECTDIR}/src/stepper-motor.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/drive-control/drive-control.o ${OBJECTDIR}/src/pwm-control/pwm-control.o ${OBJECTDIR}/src/stepper-motor/stepper-motor.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/drive-control/drive-control.o.d ${OBJECTDIR}/src/pwm-control/pwm-control.o.d ${OBJECTDIR}/src/stepper-motor/stepper-motor.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/src/drive-control.o ${OBJECTDIR}/src/stepper-motor.o
+OBJECTFILES=${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/drive-control/drive-control.o ${OBJECTDIR}/src/pwm-control/pwm-control.o ${OBJECTDIR}/src/stepper-motor/stepper-motor.o
 
 # Source Files
-SOURCEFILES=main.c src/drive-control.c src/stepper-motor.c
+SOURCEFILES=src/main.c src/drive-control/drive-control.c src/pwm-control/pwm-control.c src/stepper-motor/stepper-motor.c
 
 
 
@@ -95,42 +95,54 @@ MP_LINKER_FILE_OPTION=,--script=p24F16KA301.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/ff84ea6da1547bc9732488422dee09ba9cc14aa .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/main.o.d 
-	@${RM} ${OBJECTDIR}/main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
-${OBJECTDIR}/src/drive-control.o: src/drive-control.c  .generated_files/flags/default/12aa625fa3687828239156e1908819e03f55028b .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
+${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/65d27513c0b251f367f7dabfe8bb971b644863c3 .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
 	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/drive-control.o.d 
-	@${RM} ${OBJECTDIR}/src/drive-control.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/drive-control.c  -o ${OBJECTDIR}/src/drive-control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/drive-control.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/src/main.o.d 
+	@${RM} ${OBJECTDIR}/src/main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/main.c  -o ${OBJECTDIR}/src/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/src/stepper-motor.o: src/stepper-motor.c  .generated_files/flags/default/29ed7d355e6759432005f2c0629de21592c88f3d .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/stepper-motor.o.d 
-	@${RM} ${OBJECTDIR}/src/stepper-motor.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/stepper-motor.c  -o ${OBJECTDIR}/src/stepper-motor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/stepper-motor.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+${OBJECTDIR}/src/drive-control/drive-control.o: src/drive-control/drive-control.c  .generated_files/flags/default/dfdf3fa9b5543e34e51d2673b569e2d942972a09 .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
+	@${MKDIR} "${OBJECTDIR}/src/drive-control" 
+	@${RM} ${OBJECTDIR}/src/drive-control/drive-control.o.d 
+	@${RM} ${OBJECTDIR}/src/drive-control/drive-control.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/drive-control/drive-control.c  -o ${OBJECTDIR}/src/drive-control/drive-control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/drive-control/drive-control.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/src/pwm-control/pwm-control.o: src/pwm-control/pwm-control.c  .generated_files/flags/default/d600e7b64447c95b33fe9fabb6f3260fa6a95b0 .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
+	@${MKDIR} "${OBJECTDIR}/src/pwm-control" 
+	@${RM} ${OBJECTDIR}/src/pwm-control/pwm-control.o.d 
+	@${RM} ${OBJECTDIR}/src/pwm-control/pwm-control.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/pwm-control/pwm-control.c  -o ${OBJECTDIR}/src/pwm-control/pwm-control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/pwm-control/pwm-control.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/src/stepper-motor/stepper-motor.o: src/stepper-motor/stepper-motor.c  .generated_files/flags/default/3d03b9e8546e676c78b662abf37d842869001d24 .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
+	@${MKDIR} "${OBJECTDIR}/src/stepper-motor" 
+	@${RM} ${OBJECTDIR}/src/stepper-motor/stepper-motor.o.d 
+	@${RM} ${OBJECTDIR}/src/stepper-motor/stepper-motor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/stepper-motor/stepper-motor.c  -o ${OBJECTDIR}/src/stepper-motor/stepper-motor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/stepper-motor/stepper-motor.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/6503cd47f36ad40d6b2ac39992f65ebc3e07c5e .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/main.o.d 
-	@${RM} ${OBJECTDIR}/main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
-${OBJECTDIR}/src/drive-control.o: src/drive-control.c  .generated_files/flags/default/875bc882a98ec7295328f89e3839316f40cc09b4 .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
+${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/8b75e689beb98212642b59314fa1dfc328e38a18 .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
 	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/drive-control.o.d 
-	@${RM} ${OBJECTDIR}/src/drive-control.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/drive-control.c  -o ${OBJECTDIR}/src/drive-control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/drive-control.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/src/main.o.d 
+	@${RM} ${OBJECTDIR}/src/main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/main.c  -o ${OBJECTDIR}/src/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/main.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/src/stepper-motor.o: src/stepper-motor.c  .generated_files/flags/default/73cc10cd318ffa46d133c57b59107cd79f5a2e3b .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/stepper-motor.o.d 
-	@${RM} ${OBJECTDIR}/src/stepper-motor.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/stepper-motor.c  -o ${OBJECTDIR}/src/stepper-motor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/stepper-motor.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+${OBJECTDIR}/src/drive-control/drive-control.o: src/drive-control/drive-control.c  .generated_files/flags/default/5712df3181f9f32e32429b8648d3bac9f281f235 .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
+	@${MKDIR} "${OBJECTDIR}/src/drive-control" 
+	@${RM} ${OBJECTDIR}/src/drive-control/drive-control.o.d 
+	@${RM} ${OBJECTDIR}/src/drive-control/drive-control.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/drive-control/drive-control.c  -o ${OBJECTDIR}/src/drive-control/drive-control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/drive-control/drive-control.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/src/pwm-control/pwm-control.o: src/pwm-control/pwm-control.c  .generated_files/flags/default/e6f2e78c9a31be51229a7075c6964178a7d4e616 .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
+	@${MKDIR} "${OBJECTDIR}/src/pwm-control" 
+	@${RM} ${OBJECTDIR}/src/pwm-control/pwm-control.o.d 
+	@${RM} ${OBJECTDIR}/src/pwm-control/pwm-control.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/pwm-control/pwm-control.c  -o ${OBJECTDIR}/src/pwm-control/pwm-control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/pwm-control/pwm-control.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/src/stepper-motor/stepper-motor.o: src/stepper-motor/stepper-motor.c  .generated_files/flags/default/c32ba09a26049b502033526851bbc078ec92b5a5 .generated_files/flags/default/e9ae422dacfdebe7003964861b5b2c920a0998be
+	@${MKDIR} "${OBJECTDIR}/src/stepper-motor" 
+	@${RM} ${OBJECTDIR}/src/stepper-motor/stepper-motor.o.d 
+	@${RM} ${OBJECTDIR}/src/stepper-motor/stepper-motor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/stepper-motor/stepper-motor.c  -o ${OBJECTDIR}/src/stepper-motor/stepper-motor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/src/stepper-motor/stepper-motor.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -I"include" -I"src" -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 
