@@ -1,4 +1,8 @@
-// Mechawreckers    MEEN 330   Oct. 2021
+/* Mechawreckers    MEEN 330   Oct. 2021
+
+main.c -- the code that the robot executes
+*/
+
 
 #include <xc.h>
 
