@@ -16,34 +16,72 @@ drive-control.h -- A library that contains high level commands to control the ro
 
 
 // ---- Driving Methods ----
+
+// drives the robot forward at a rate for an unspecified amound of time
+// inputs -- rate in cm/s
 void driveForward(float rate);
 
+// drives the robot backwards at a rate for an unspedifiec amount of time
+// inputs -- rate in cm/s
 void driveBackwards(float rate);
 
-void driveForward(float rate, float distance);
 
+//drives the robot forward at a rate for an unspecified amound of time
+// inputs -- rate in cm/s
+// -- distance in cm
+void driveForward(float rate, float distance);
+ 
+//drives the robot back wards at a rate for an unspecified amound of time
+// inputs -- rate in cm/s
+// -- distance in cm
 void driveBackwards(float rate, float distance);
 
 // ---- Rotating Methods ---- 
 
+//rotates the robot clockwise at a rate for an unspecified amound of time
+// inputs -- rate in rad/s
 void rotateCW(float rate);
+
+//rotates the robot counterclockwise  at a rate for an unspecified amound of time
+// inputs -- rate in rad/s
 
 void rotateCCW(float rate);
 
+ 
+//drives the robot clockwise at a rate for an unspecified amound of time
+// inputs -- rate in cm/s
+// -- degrees of rotation
 void rotateCW(float rate, float degrees);
 
+//drives the robot  counter clockwise at a rate for an unspecified amound of time
+// inputs -- rate in cm/s
+// -- degrees of rotation
 void rotateCCW(float rate, float degrees);
 
 
 
 // ---- Turning methods ----
 
+// turns the robot right about a radius equal to the wheel distances at a rate
+// rate -- rad/second
 void turnRight(float rate);
 
+// turns the robot left about a radius equal to the wheel distances at a rate
+// rate -- rad/second
 void turnLeft(float rate);
 
+
+// turns the robot right about a radius
+// inputs : 
+// rate -- rad/second
+// radius in cm 
 void turnRight(float rate, float degrees, float radius);
 
+
+// turns the robot right about a radius
+// inputs : 
+// rate -- rad/second
+// radius in cm 
 void turnLeft(float rate, float degrees, float radius);
 
 
