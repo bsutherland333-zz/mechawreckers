@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/mechawreckers.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=mechawreckers.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=mechawreckers/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/stacey.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=stacey.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=stacey/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/mechawreckers/bin
+makeDirectory ${TMPDIR}/stacey/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/mechawreckers.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/stacey.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/mechawreckers.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/stacey.tar *
 checkReturnCode
 
 # Cleanup

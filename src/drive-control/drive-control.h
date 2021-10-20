@@ -29,12 +29,12 @@ void driveBackwards(float rate);
 //drives the robot forward at a rate for an unspecified amound of time
 // inputs -- rate in cm/s
 // -- distance in cm
-void driveForward(float rate, float distance);
+void driveForward_dist(float rate, float distance);
  
 //drives the robot back wards at a rate for an unspecified amound of time
 // inputs -- rate in cm/s
 // -- distance in cm
-void driveBackwards(float rate, float distance);
+void driveBackwards_dist(float rate, float distance);
 
 // ---- Rotating Methods ---- 
 
@@ -51,12 +51,12 @@ void rotateCCW(float rate);
 //drives the robot clockwise at a rate for an unspecified amound of time
 // inputs -- rate in cm/s
 // -- degrees of rotation
-void rotateCW(float rate, float degrees);
+void rotateCW_dist(float rate, float degrees);
 
 //drives the robot  counter clockwise at a rate for an unspecified amound of time
 // inputs -- rate in cm/s
 // -- degrees of rotation
-void rotateCCW(float rate, float degrees);
+void rotateCCW_dist(float rate, float degrees);
 
 
 
@@ -64,25 +64,25 @@ void rotateCCW(float rate, float degrees);
 
 // turns the robot right about a radius equal to the wheel distances at a rate
 // rate -- rad/second
-void turnRight(float rate);
+void turnRight(float rate, float radius);
 
 // turns the robot left about a radius equal to the wheel distances at a rate
 // rate -- rad/second
-void turnLeft(float rate);
+void turnLeft(float rate, float radius);
 
 
 // turns the robot right about a radius
 // inputs : 
 // rate -- rad/second
 // radius in cm 
-void turnRight(float rate, float degrees, float radius);
+void turnRight_dist(float rate, float degrees, float radius);
 
 
 // turns the robot right about a radius
 // inputs : 
 // rate -- rad/second
 // radius in cm 
-void turnLeft(float rate, float degrees, float radius);
+void turnLeft_dist(float rate, float degrees, float radius);
 
 
 #endif
