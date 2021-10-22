@@ -1,9 +1,3 @@
-/* Mechawreckers    MEEN 330   Oct. 2021 2
-
-main.c -- the code that the robot executes
-*/
-
-
 #include <xc.h>
 
 #include "drive-control/drive-control.h"
@@ -19,7 +13,7 @@ int main(int argc, char** argv) {
     ANSB = 0;
 
     
-    turnRight(2*3.1415/15.0, 14.142);
+    rotateCW(2*3.1415);
     
     while (1);
     return 0;
