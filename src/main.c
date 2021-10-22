@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     ANSB = 0;
 
     
-    rotateCCW(2*3.1415/10);
+    turnRight(2*3.1415/15.0, 14.142);
     
     while (1);
     return 0;
