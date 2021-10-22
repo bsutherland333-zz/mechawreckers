@@ -72,10 +72,10 @@ void turnRight(float rate, float radius)
     
     
     // find the speed of the right motor
-    float right_rps = (rate * (radius - _DriveControl__wheel_distance/2)) / (_DriveControl__wheel_diameter* 3.1415 * 2);
+    float right_rps = (rate * (radius - _DriveControl__wheel_distance/2)) / ((_DriveControl__wheel_diameter / 2)* 3.1415 * 2);
     
     // find the speed of the left motor
-    float left_rps = (rate * (radius + _DriveControl__wheel_distance/2)) / (_DriveControl__wheel_diameter* 3.1415 * 2);
+    float left_rps = (rate * (radius + _DriveControl__wheel_distance/2)) / ((_DriveControl__wheel_diameter / 2)* 3.1415 * 2);
     
     
     // run the motors
