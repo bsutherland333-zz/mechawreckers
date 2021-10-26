@@ -72,10 +72,35 @@ void turnRight(float rate, float radius)
     
     
     // find the speed of the right motor
-    float right_rps = (rate * (radius - _DriveControl__wheel_distance/2)) / ((_DriveControl__wheel_diameter / 2)* 3.1415 * 2);
+    float right_rps = (rate * (radius - _DriveControl__wheel_distance/2.0)) / ((_DriveControl__wheel_diameter / 2.0)* 3.1415 * 2);
     
     // find the speed of the left motor
-    float left_rps = (rate * (radius + _DriveControl__wheel_distance/2)) / ((_DriveControl__wheel_diameter / 2)* 3.1415 * 2);
+    float left_rps = (rate * (radius + _DriveControl__wheel_distance/2.0)) / ((_DriveControl__wheel_diameter / 2.0)* 3.1415 * 2);
+    
+    
+    // run the motors
+    StepperMotor__rotate(1, 0, right_rps, 1); // right stepper
+    StepperMotor__rotate(2, 0, left_rps, 1); // left stepper
+}
+
+
+void turnLeft(float rate, float radius)
+{
+    // check if the radius is at least equal to half the wheel distance (one wheel is stationary)
+    if(radius < _DriveControl__wheel_distance / 2)
+    {
+        rotateCW(rate); // if so, just rotate in place
+        return;
+    }
+    
+    StepperMotor__init(); // reset steppers
+    
+    
+    // find the speed of the right motor
+    float right_rps = (rate * (radius + _DriveControl__wheel_distance/2.0)) / ((_DriveControl__wheel_diameter / 2.0)* 3.1415 * 2);
+    
+    // find the speed of the left motor
+    float left_rps = (rate * (radius - _DriveControl__wheel_distance/2.0)) / ((_DriveControl__wheel_diameter / 2.0)* 3.1415 * 2);
     
     
     // run the motors

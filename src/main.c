@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
     ANSB = 0;
 
     
-    turnRight(2*3.1415/15.0, 14.142);
+    turnRight(2*3.1415/15.0, 15.0);
     
     while (1);
     return 0;
