@@ -19,7 +19,9 @@ int main(int argc, char** argv) {
     ANSB = 0;
 
     
-    turnRight(2*3.1415/15.0, 15.0);
+    /// look and seee if we see an led
+    // if so -- stop
+    // if not -- rotateRight(rate)
     
     while (1);
     return 0;
