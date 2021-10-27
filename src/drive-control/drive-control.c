@@ -57,7 +57,7 @@ void DriveControl__rotateCCW(float rate) {
 void DriveControl__turnRight(float rate, float radius) {
     // check if the radius is at least equal to half the wheel distance (one wheel is stationary)
     if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2) {
-        rotateCW(rate); // if so, just rotate in place
+        DriveControl__rotateCW(rate); // if so, just rotate in place
         return;
     }
 
@@ -82,7 +82,7 @@ void DriveControl__turnRight(float rate, float radius) {
 void DriveControl__turnLeft(float rate, float radius) {
     // check if the radius is at least equal to half the wheel distance (one wheel is stationary)
     if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2) {
-        rotateCW(rate); // if so, just rotate in place
+        DriveControl__rotateCW(rate); // if so, just rotate in place
         return;
     }
 
