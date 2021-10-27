@@ -56,3 +56,7 @@ dkms.conf
 # IDE files/folders
 /.idea
 /.generated_files
+/build
+/debug
+/dist
+/nbproject/private
