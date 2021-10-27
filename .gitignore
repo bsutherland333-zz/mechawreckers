@@ -53,5 +53,11 @@ dkms.conf
 /build/
 /dist/
 
-# IDE Files
-/.idea
+# IDE files/folders
+.idea
+.generated_files
+debug
+nbproject/*
+!nbproject/configurations.xml
+!nbproject/project.xml
+!nbproject/project.properties
