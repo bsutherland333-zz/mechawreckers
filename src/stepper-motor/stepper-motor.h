@@ -23,5 +23,6 @@ void _StepperMotor__setDirection(int motor, int direction);
 void _StepperMotor__setSpeed(int motor, float speed);
 void _StepperMotor__setRotations(int motor, float rotations);
 void StepperMotor__completeRotations();
+void StepperMotor__stopMotion();
 
 #endif

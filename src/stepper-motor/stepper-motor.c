@@ -111,3 +111,8 @@ void StepperMotor__completeRotations() {
     _StepperMotor__setSpeed(1, 0);
     _StepperMotor__setSpeed(2, 0);
 }
+
+void StepperMotor__stopMotion() {
+    _StepperMotor__setSpeed(1, 0);
+    _StepperMotor__setSpeed(2, 0);
+}
