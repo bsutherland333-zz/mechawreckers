@@ -53,5 +53,6 @@ dkms.conf
 /build/
 /dist/
 
-# IDE Files
+# IDE files/folders
 /.idea
+/.generated_files
