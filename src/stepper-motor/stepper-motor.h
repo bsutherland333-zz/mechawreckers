@@ -1,6 +1,6 @@
-/* 
+/*
  * Class for controlling stepper motors.
- * 
+ *
  * The pic24 does not allow for an address to be passed as a function argument,
  * so motor outputs will need to be pre-configured in this class.
  */
