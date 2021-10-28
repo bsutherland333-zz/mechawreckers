@@ -11,8 +11,7 @@ void StepperMotor__init() {
     PWMControl__init2(0, 0);
 }
 
-void StepperMotor__rotate(int motor, int direction, float speed,
-                          float rotations) {
+void StepperMotor__rotate(int motor, int direction, float speed, float rotations) {
     _StepperMotor__setDirection(motor, direction);
     _StepperMotor__setSpeed(motor, speed);
     _StepperMotor__setRotations(motor, rotations);
@@ -36,10 +35,16 @@ void StepperMotor__completeRotations() {
     _StepperMotor__setSpeed(2, 0);
 }
 
-void StepperMotor__stopMotion() {
+void StepperMotor__stopMotion(int motor) {
     // Stops all motor rotation.
-    _StepperMotor__setSpeed(1, 0);
-    _StepperMotor__setSpeed(2, 0);
+    switch (motor) {
+        case 1:
+            _StepperMotor__setSpeed(1, 0);
+            break;
+        case 2:
+            _StepperMotor__setSpeed(2, 0);
+            break;
+    }
 }
 
 void _StepperMotor__setDirection(int motor, int direction) {
@@ -70,8 +75,7 @@ void _StepperMotor__setSpeed(int motor, float speed) {
 
     switch (motor) {
         case 1:
-            steps_per_sec = speed * _STEPPERMOTOR__STEPS_PER_ROTATION *
-                    (1 / _STEPPERMOTOR__STEP_SIZE_1);
+            steps_per_sec = speed * _STEPPERMOTOR__STEPS_PER_ROTATION * (1 / _STEPPERMOTOR__STEP_SIZE_1);
 
             // Saturate speed
             if (steps_per_sec > _STEPPERMOTOR__MAX_HZ) {
@@ -84,8 +88,7 @@ void _StepperMotor__setSpeed(int motor, float speed) {
 
             break;
         case 2:
-            steps_per_sec = speed * _STEPPERMOTOR__STEPS_PER_ROTATION *
-                    (1 / _STEPPERMOTOR__STEP_SIZE_2);
+            steps_per_sec = speed * _STEPPERMOTOR__STEPS_PER_ROTATION * (1 / _STEPPERMOTOR__STEP_SIZE_2);
 
             // Saturate speed
             if (steps_per_sec > _STEPPERMOTOR__MAX_HZ) {
@@ -110,13 +113,11 @@ void _StepperMotor__setRotations(int motor, float rotations) {
     int num_steps = 0;
     switch (motor) {
         case 1:
-            num_steps = _STEPPERMOTOR__STEPS_PER_ROTATION * rotations *
-                    (1 / _STEPPERMOTOR__STEP_SIZE_1);
+            num_steps = _STEPPERMOTOR__STEPS_PER_ROTATION * rotations * (1 / _STEPPERMOTOR__STEP_SIZE_1);
             PWMControl__setInterrupt1(num_steps);
             break;
         case 2:
-            num_steps = _STEPPERMOTOR__STEPS_PER_ROTATION * rotations *
-                    (1 / _STEPPERMOTOR__STEP_SIZE_2);
+            num_steps = _STEPPERMOTOR__STEPS_PER_ROTATION * rotations * (1 / _STEPPERMOTOR__STEP_SIZE_2);
             PWMControl__setInterrupt2(num_steps);
             break;
     }

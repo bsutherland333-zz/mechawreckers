@@ -7,6 +7,10 @@
  * Motor numbers are defined by the PWM signal they use. (i.e. motor 1 uses OC1 (pin 14)).
  *
  * Currently the right motor is motor 1 and the left motor is motor 2.
+ *
+ * NOTE: Motors will not run if the requested speed it too low.
+ *
+ * TODO: If someone gets bored they should switch this and its dependent code to use radians instead of rotations
  */
 
 #ifndef STEPPER_MOTOR_H_
@@ -37,7 +41,7 @@ void StepperMotor__completeRotations();
 
 // This will stop each motor immediately regardless of the number of completed rotations. Is not blocking code and is
 // useful for conditional movement.
-void StepperMotor__stopMotion();
+void StepperMotor__stopMotion(int motor);
 
 // ---- Private class functions ----
 
