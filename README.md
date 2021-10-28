@@ -21,4 +21,3 @@ To organize our code, please make files that group functions into categories bas
 ## Compiling on MPLab IDE
 
 - The code on in this directory won't compile unless you include the src directory in your project path
-

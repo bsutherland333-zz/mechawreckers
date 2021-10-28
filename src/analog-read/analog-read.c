@@ -145,3 +145,158 @@ void setup_analog(int register)
 	_SMPI++; // increment the number of analog channels scanned
 
 }
+
+// returns the analogue reading of a certain register
+int read_analog(int register)
+{   
+    int val = -1;
+   
+    // return the result of the given register
+    // if it doesn't exist return -1
+    switch (register)
+    {
+    case 0:
+
+        val = ADCIBUF00;
+        break;
+
+    case 1:
+
+        val = ADCIBUF01;
+        break;
+
+    case 2:
+        
+        val = ADCIBUF02;
+        break;
+
+    case 3:
+
+        val = ADCIBUF03;
+        break;
+
+    case 4:
+        
+        val = ADCIBUF04;
+        break;
+
+    case 9:
+        
+        val = ADCIBUF09;
+        break;
+
+    case 10:
+
+        val = ADCIBUF10;
+        break;
+
+    case 11:
+        
+        val = ADCIBUF11;
+        break;
+
+    case 12:
+
+        val = ADCIBUF12;
+        break;
+
+    case 13:
+
+        val = ADCIBUF13;
+        break;
+
+    case 14:
+
+        val = ADCIBUF14;
+        break;
+
+    case 15:
+
+        val = ADCIBUF15;
+        break;
+    
+    default:
+        break;
+    }
+	
+	return val;
+
+}
+
+
+// returns the analogue reading of a certain pin
+int read_analog_pin(int pin)
+{   
+    int val = -1;
+   
+    // return the result of the given pin
+    // if it doesn't exist return -1
+    switch (register)
+    {
+    case 2:
+
+        val = ADCIBUF00;
+        break;
+
+    case 3:
+
+        val = ADCIBUF01;
+        break;
+
+    case 4:
+        
+        val = ADCIBUF02;
+        break;
+
+    case 5:
+
+        val = ADCIBUF03;
+        break;
+
+    case 6:
+        
+        val = ADCIBUF04;
+        break;
+
+    case 18:
+        
+        val = ADCIBUF09;
+        break;
+
+    case 17:
+
+        val = ADCIBUF10;
+        break;
+
+    case 16:
+        
+        val = ADCIBUF11;
+        break;
+
+    case 15:
+
+        val = ADCIBUF12;
+        break;
+
+    case 7:
+
+        val = ADCIBUF13;
+        break;
+
+    case 8:
+
+        val = ADCIBUF14;
+        break;
+
+    case 9:
+
+        val = ADCIBUF15;
+        break;
+    
+    default:
+        break;
+    }
+	
+	return val;
+
+}
