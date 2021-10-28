@@ -18,7 +18,7 @@ void analog_init()
 	// use auto-convert
 	_SSRC = 0b0111;		// AD1CON1<7:4>, pg. 211 datasheet
 	// use auto-sample
-	_ASAM = 1;			// AD1CON1<2>
+	_ASAM = 1;			// AD1CON1<2>register
 	// choose a sample time >= 1 Tad, see Table 29-41 datasheet
 	_SAMC = 0b00001;	// AD1CON3<12:8>
 
