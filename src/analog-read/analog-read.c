@@ -46,14 +46,14 @@ void analog_init()
 	_ADON = 1;			// AD1CON1<15>
 }
 
-void setup_analog(int register) 
+void setup_analog(int rgstr) 
 {
 	
     
     // choose which channels to scan, e.g. for ch AN12, set _CSS12 = 1;
     // Also configure the approriate pins as analog
     // if register doesn't exist, do nothing
-    switch (register)
+    switch (rgstr)
     {
     case 0:
 
@@ -147,72 +147,72 @@ void setup_analog(int register)
 }
 
 // returns the analogue reading of a certain register
-int read_analog(int register)
+int read_analog(int rgstr)
 {   
     int val = -1;
    
     // return the result of the given register
     // if it doesn't exist return -1
-    switch (register)
+    switch (rgstr)
     {
     case 0:
 
-        val = ADCIBUF00;
+        val = ADC1BUF0;
         break;
 
     case 1:
 
-        val = ADCIBUF01;
+        val = ADC1BUF1;
         break;
 
     case 2:
         
-        val = ADCIBUF02;
+        val = ADC1BUF2;
         break;
 
     case 3:
 
-        val = ADCIBUF03;
+        val = ADC1BUF3;
         break;
 
     case 4:
         
-        val = ADCIBUF04;
+        val = ADC1BUF4;
         break;
 
     case 9:
         
-        val = ADCIBUF09;
+        val = ADC1BUF9;
         break;
 
     case 10:
 
-        val = ADCIBUF10;
+        val = ADC1BUF10;
         break;
 
     case 11:
         
-        val = ADCIBUF11;
+        val = ADC1BUF11;
         break;
 
     case 12:
 
-        val = ADCIBUF12;
+        val = ADC1BUF12;
         break;
 
     case 13:
 
-        val = ADCIBUF13;
+        val = ADC1BUF13;
         break;
 
     case 14:
 
-        val = ADCIBUF14;
+        val = ADC1BUF14;
         break;
 
     case 15:
 
-        val = ADCIBUF15;
+        val = ADC1BUF15;
         break;
     
     default:
@@ -231,66 +231,66 @@ int read_analog_pin(int pin)
    
     // return the result of the given pin
     // if it doesn't exist return -1
-    switch (register)
+    switch (pin)
     {
     case 2:
 
-        val = ADCIBUF00;
+        val = ADC1BUF0;
         break;
 
     case 3:
 
-        val = ADCIBUF01;
+        val = ADC1BUF1;
         break;
 
     case 4:
         
-        val = ADCIBUF02;
+        val = ADC1BUF2;
         break;
 
     case 5:
 
-        val = ADCIBUF03;
+        val = ADC1BUF3;
         break;
 
     case 6:
         
-        val = ADCIBUF04;
+        val = ADC1BUF4;
         break;
 
     case 18:
         
-        val = ADCIBUF09;
+        val = ADC1BUF9;
         break;
 
     case 17:
 
-        val = ADCIBUF10;
+        val = ADC1BUF10;
         break;
 
     case 16:
         
-        val = ADCIBUF11;
+        val = ADC1BUF11;
         break;
 
     case 15:
 
-        val = ADCIBUF12;
+        val = ADC1BUF12;
         break;
 
     case 7:
 
-        val = ADCIBUF13;
+        val = ADC1BUF13;
         break;
 
     case 8:
 
-        val = ADCIBUF14;
+        val = ADC1BUF14;
         break;
 
     case 9:
 
-        val = ADCIBUF15;
+        val = ADC1BUF15;
         break;
     
     default:
