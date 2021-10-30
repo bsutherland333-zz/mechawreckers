@@ -3,43 +3,27 @@
 main.c -- the code that the robot executes
 */
 
-
 #include <xc.h>
-
 #include "analog-read/analog-read.h"
-
-
-
 
 #pragma config FNOSC = FRCDIV  // Update value in global-params if changed
 
-int main(int argc, char **argv) 
+void main_init();
+
+int main(int argc, char **argv)
 {
-    _RCDIV = 0b101;
+    main_init();
+
+    return 0;
+}
+
+void main_init() {
     // Sets all pin registers to 0
+    _RCDIV = 0b101;
+    // Sets all pins to be output
     TRISA = 0;
     TRISB = 0;
+    // Sets all pins to be digital
     ANSA = 0;
     ANSB = 0;
-    
-    analog_init();
-  
-    setup_analog(0);
-    setup_analog(1);
-    setup_analog(2);
-    setup_analog(3);
-    
-
-    while (1)
-    {
-        if(read_analog_pin(5) > 4095/2)
-        {
-            _LATA2 = 1;
-        }
-        else
-        {
-            _LATA2 = 1;
-        }
-    }
-    return 0;
 }
