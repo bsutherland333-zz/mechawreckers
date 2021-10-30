@@ -8,6 +8,7 @@
       <itemPath>src/drive-control/drive-control.h</itemPath>
       <itemPath>src/pwm-control/pwm-control.h</itemPath>
       <itemPath>src/global-params.h</itemPath>
+      <itemPath>src/analog-read/analog-read.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -27,7 +28,6 @@
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>src/analog-read/analog-read.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
