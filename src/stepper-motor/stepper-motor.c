@@ -42,14 +42,14 @@ int StepperMotor__checkMotorStatus(int motor) {
             if (PWMControl__getInterruptState1() == 0)
             {
                 _StepperMotor__setSpeed(1, 0);
-                status1 = 0;
+                status = 0;
             }
             break;
         case 2:
             if (PWMControl__getInterruptState2() == 0)
             {
                 _StepperMotor__setSpeed(2, 0);
-                status2 = 0;
+                status = 0;
             }
             break;
     }
