@@ -17,7 +17,8 @@ int main(int argc, char **argv)
     return 0;
 }
 
-void main_init() {
+void main_init()
+{
     // Sets all pin registers to 0
     _RCDIV = 0b101;
     // Sets all pins to be output

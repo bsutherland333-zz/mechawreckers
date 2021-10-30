@@ -1,7 +1,7 @@
 /*
    Mechawreckers    MEEN330    Oct 2021
 
-   analog-read.h -- a library that supports the analog read functions of the PIC24F16KA301  
+   analog-read.h -- a library that supports the analog read functions of the PIC24F16KA301
 */
 
 
@@ -22,7 +22,6 @@ int read_analog(int rgstr);
 
 // gives the current analog reading of a particular pin
 int read_analog_pin(int pin);
-
 
 
 #endif

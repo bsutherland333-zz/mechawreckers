@@ -3,12 +3,14 @@
 #include "global-params.h"
 #include "drive-control.h"
 
-void DriveControl__stopMovement() {
+void DriveControl__stopMovement()
+{
     StepperMotor__stopMotion(1);
     StepperMotor__stopMotion(2);
 }
 
-void DriveControl__driveForwards(float rate) {
+void DriveControl__driveForwards(float rate)
+{
     StepperMotor__init(); // reset the stepper motors
 
     float w = 2 * rate / _DRIVECONTROL__WHEEL_DIAMETER; // find angular rate (radians/sec)
@@ -19,7 +21,9 @@ void DriveControl__driveForwards(float rate) {
     StepperMotor__rotate(1, 0, rps, 0);
     StepperMotor__rotate(2, 1, rps, 0);
 }
-void DriveControl__driveForwards_dist(float rate, float distance) {
+
+void DriveControl__driveForwards_dist(float rate, float distance)
+{
     StepperMotor__init(); // reset the stepper motors
 
     float w = 2 * rate / _DRIVECONTROL__WHEEL_DIAMETER; // find angular rate (radians/sec)
@@ -35,7 +39,8 @@ void DriveControl__driveForwards_dist(float rate, float distance) {
 }
 
 
-void DriveControl__driveBackwards(float rate) {
+void DriveControl__driveBackwards(float rate)
+{
     StepperMotor__init(); // reset the stepper motors
 
     float w = 2 * rate / _DRIVECONTROL__WHEEL_DIAMETER; // find angular rate (radians/sec)
@@ -46,7 +51,9 @@ void DriveControl__driveBackwards(float rate) {
     StepperMotor__rotate(1, 1, rps, 0);
     StepperMotor__rotate(2, 0, rps, 0);
 }
-void DriveControl__driveBackwards_dist(float rate, float distance) {
+
+void DriveControl__driveBackwards_dist(float rate, float distance)
+{
     StepperMotor__init(); // reset the stepper motors
 
     float w = 2 * rate / _DRIVECONTROL__WHEEL_DIAMETER; // find angular rate (radians/sec)
@@ -62,7 +69,8 @@ void DriveControl__driveBackwards_dist(float rate, float distance) {
 }
 
 
-void DriveControl__rotateCW(float rate) {
+void DriveControl__rotateCW(float rate)
+{
     // Reset Steppers
     StepperMotor__init();
 
@@ -73,7 +81,9 @@ void DriveControl__rotateCW(float rate) {
     StepperMotor__rotate(1, 1, rps, 0);
     StepperMotor__rotate(2, 1, rps, 0);
 }
-void DriveControl__rotateCW_dist(float rate, float degrees) {
+
+void DriveControl__rotateCW_dist(float rate, float degrees)
+{
     // Reset Steppers
     StepperMotor__init();
 
@@ -90,8 +100,8 @@ void DriveControl__rotateCW_dist(float rate, float degrees) {
 }
 
 
-
-void DriveControl__rotateCCW(float rate) {
+void DriveControl__rotateCCW(float rate)
+{
     // Reset Steppers
     StepperMotor__init();
 
@@ -102,7 +112,9 @@ void DriveControl__rotateCCW(float rate) {
     StepperMotor__rotate(1, 0, rps, 0);
     StepperMotor__rotate(2, 0, rps, 0);
 }
-void DriveControl__rotateCCW_dist(float rate, float degrees) {
+
+void DriveControl__rotateCCW_dist(float rate, float degrees)
+{
     // Reset Steppers
     StepperMotor__init();
 
@@ -119,9 +131,11 @@ void DriveControl__rotateCCW_dist(float rate, float degrees) {
 }
 
 
-void DriveControl__turnRight(float rate, float radius) {
+void DriveControl__turnRight(float rate, float radius)
+{
     // check if the radius is at least equal to half the wheel distance (one wheel is stationary)
-    if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2) {
+    if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2)
+    {
         DriveControl__rotateCW(rate); // if so, just rotate in place
         return;
     }
@@ -141,9 +155,12 @@ void DriveControl__turnRight(float rate, float radius) {
     StepperMotor__rotate(1, 0, right_rps, 0); // right stepper
     StepperMotor__rotate(2, 1, left_rps, 0); // left stepper
 }
-void DriveControl__turnRight_dist(float rate, float radius, float angle) {
+
+void DriveControl__turnRight_dist(float rate, float radius, float angle)
+{
     // check if the radius is at least equal to half the wheel distance (one wheel is stationary)
-    if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2) {
+    if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2)
+    {
         DriveControl__rotateCW(rate); // if so, just rotate in place
         return;
     }
@@ -161,9 +178,9 @@ void DriveControl__turnRight_dist(float rate, float radius, float angle) {
     // find the number of rotations
     angle = angle * (PI / 180); // Converts degrees to radians
     float right_rotations = (angle * (radius - _DRIVECONTROL__WHEEL_DISTANCE / 2.0)) /
-                      (_DRIVECONTROL__WHEEL_DIAMETER * PI);
-    float left_rotations = (angle * (radius + _DRIVECONTROL__WHEEL_DISTANCE / 2.0)) /
                             (_DRIVECONTROL__WHEEL_DIAMETER * PI);
+    float left_rotations = (angle * (radius + _DRIVECONTROL__WHEEL_DISTANCE / 2.0)) /
+                           (_DRIVECONTROL__WHEEL_DIAMETER * PI);
 
 
     // run the motors
@@ -173,9 +190,11 @@ void DriveControl__turnRight_dist(float rate, float radius, float angle) {
 }
 
 
-void DriveControl__turnLeft(float rate, float radius) {
+void DriveControl__turnLeft(float rate, float radius)
+{
     // check if the radius is at least equal to half the wheel distance (one wheel is stationary)
-    if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2) {
+    if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2)
+    {
         DriveControl__rotateCW(rate); // if so, just rotate in place
         return;
     }
@@ -195,9 +214,12 @@ void DriveControl__turnLeft(float rate, float radius) {
     StepperMotor__rotate(1, 0, right_rps, 0); // right stepper
     StepperMotor__rotate(2, 1, left_rps, 0); // left stepper
 }
-void DriveControl__turnLeft_dist(float rate, float radius, float angle) {
+
+void DriveControl__turnLeft_dist(float rate, float radius, float angle)
+{
     // check if the radius is at least equal to half the wheel distance (one wheel is stationary)
-    if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2) {
+    if (radius < _DRIVECONTROL__WHEEL_DISTANCE / 2)
+    {
         DriveControl__rotateCW(rate); // if so, just rotate in place
         return;
     }
