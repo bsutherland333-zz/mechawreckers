@@ -14,6 +14,8 @@ drive-control.h -- A library that contains high level commands to control the ro
 #define _DRIVECONTROL__WHEEL_DIAMETER 8.0f  //cm
 #define _DRIVECONTROL__WHEEL_DISTANCE 21.0f //cm
 
+void DriveControl__init();
+
 // Stops all driving motion regardless of state
 void DriveControl__stopMovement();
 
