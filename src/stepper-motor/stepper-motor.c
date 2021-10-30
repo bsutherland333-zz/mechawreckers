@@ -19,28 +19,6 @@ void StepperMotor__rotate(int motor, int direction, float speed, float rotations
     _StepperMotor__setRotations(motor, rotations);
 }
 
-void StepperMotor__completeRotations()
-{
-    // Continually checks if an interrupt is complete and stops that motors rotation.
-    // Note: THIS IS BLOCKING CODE, do not use for conditional use cases. Use stopRotation instead.
-    while ((PWMControl__getInterruptState1() +
-            PWMControl__getInterruptState2()) > 0)
-    {
-
-        if (PWMControl__getInterruptState1() == 0)
-        {
-            _StepperMotor__setSpeed(1, 0);
-        }
-        if (PWMControl__getInterruptState2() == 0)
-        {
-            _StepperMotor__setSpeed(2, 0);
-        }
-    }
-
-    _StepperMotor__setSpeed(1, 0);
-    _StepperMotor__setSpeed(2, 0);
-}
-
 void StepperMotor__stopMotion(int motor)
 {
     // Stops all motor rotation.
@@ -53,6 +31,30 @@ void StepperMotor__stopMotion(int motor)
             _StepperMotor__setSpeed(2, 0);
             break;
     }
+}
+
+int StepperMotor__checkMotorStatus(int motor) {
+    int status = 1;
+
+    switch (motor)
+    {
+        case 1:
+            if (PWMControl__getInterruptState1() == 0)
+            {
+                _StepperMotor__setSpeed(1, 0);
+                status1 = 0;
+            }
+            break;
+        case 2:
+            if (PWMControl__getInterruptState2() == 0)
+            {
+                _StepperMotor__setSpeed(2, 0);
+                status2 = 0;
+            }
+            break;
+    }
+
+    return status;
 }
 
 void _StepperMotor__setDirection(int motor, int direction)

@@ -9,6 +9,14 @@ void DriveControl__stopMovement()
     StepperMotor__stopMotion(2);
 }
 
+int DriveControl__checkDriveStatus() {
+    if (StepperMotor__checkMotorStatus(1) + StepperMotor__checkMotorStatus(2) == 0) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
 void DriveControl__driveForwards(float rate)
 {
     StepperMotor__init(); // reset the stepper motors
@@ -35,7 +43,6 @@ void DriveControl__driveForwards_dist(float rate, float distance)
     // drive motors
     StepperMotor__rotate(1, 0, rps, num_rotations);
     StepperMotor__rotate(2, 1, rps, num_rotations);
-    StepperMotor__completeRotations();
 }
 
 
@@ -65,7 +72,6 @@ void DriveControl__driveBackwards_dist(float rate, float distance)
     // drive motors
     StepperMotor__rotate(1, 1, rps, num_rotations);
     StepperMotor__rotate(2, 0, rps, num_rotations);
-    StepperMotor__completeRotations();
 }
 
 
@@ -96,7 +102,6 @@ void DriveControl__rotateCW_dist(float rate, float degrees)
     // Run motors
     StepperMotor__rotate(1, 1, rps, rotations);
     StepperMotor__rotate(2, 1, rps, rotations);
-    StepperMotor__completeRotations();
 }
 
 
@@ -127,7 +132,6 @@ void DriveControl__rotateCCW_dist(float rate, float degrees)
     // Run motors
     StepperMotor__rotate(1, 0, rps, rotations);
     StepperMotor__rotate(2, 0, rps, rotations);
-    StepperMotor__completeRotations();
 }
 
 
@@ -186,7 +190,6 @@ void DriveControl__turnRight_dist(float rate, float radius, float angle)
     // run the motors
     StepperMotor__rotate(1, 0, right_rps, right_rotations); // right stepper
     StepperMotor__rotate(2, 1, left_rps, left_rotations); // left stepper
-    StepperMotor__completeRotations();
 }
 
 
@@ -245,5 +248,4 @@ void DriveControl__turnLeft_dist(float rate, float radius, float angle)
     // run the motors
     StepperMotor__rotate(1, 0, right_rps, right_rotations); // right stepper
     StepperMotor__rotate(2, 1, left_rps, left_rotations); // left stepper
-    StepperMotor__completeRotations();
 }

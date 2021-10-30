@@ -8,7 +8,7 @@ drive-control.h -- A library that contains high level commands to control the ro
 #ifndef DRIVE_CONTROL_H_
 #define DRIVE_CONTROL_H_
 
-#include "../stepper-motor/stepper-motor.h"
+#include "stepper-motor/stepper-motor.h"
 
 // Hardware defined-values
 #define _DRIVECONTROL__WHEEL_DIAMETER 8.0f  //cm
@@ -16,6 +16,10 @@ drive-control.h -- A library that contains high level commands to control the ro
 
 // Stops all driving motion regardless of state
 void DriveControl__stopMovement();
+
+// Checks to see if the robot has driven the requested distance and stops the robot if it has.
+// Return 1 if still driving, 0 if done.
+int DriveControl__checkDriveStatus();
 
 // ---- Driving Methods ----
 

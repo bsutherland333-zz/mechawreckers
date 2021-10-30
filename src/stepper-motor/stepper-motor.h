@@ -27,21 +27,22 @@
 // ---- Motor Control ----
 
 // Motors must be initialized before they are used. You can re-initialize them as many times as you like.
+//  Using a motor without initialization may result in unpredictable behavior
 void StepperMotor__init();
 
 // This function defines motor rotation speed (rotations per second), direction (0 is clockwise, 1 is counter-clockwise,
-// and distance (total rotations).
+//  and distance (total rotations).
 // This will run continually until stopped with completeRotations or stopMotion.
 void StepperMotor__rotate(int motor, int direction, float speed, float rotations);
 
-// This will stop each individual motor once the desired number of rotations has been completed. Motors do not need to
-// stop all at once, they can stop individually.
-// Note: THIS IS BLOCKING CODE. Do not use for conditional movement.
-void StepperMotor__completeRotations();
-
 // This will stop each motor immediately regardless of the number of completed rotations. Is not blocking code and is
-// useful for conditional movement.
+//  useful for conditional movement.
 void StepperMotor__stopMotion(int motor);
+
+// This function will do two things:
+//  - Check if motor needs to stop and will stop the motor if the PWM interrupt has reached it finished state.
+//  - Will return 1 if motor is still spinning, and return 0 if it is not.
+int StepperMotor__checkMotorStatus(int motor);
 
 // ---- Private class functions ----
 
