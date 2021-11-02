@@ -8,6 +8,9 @@ main.c -- the code that the robot executes
 #include "drive-control/drive-control.h"
 
 #pragma config FNOSC = FRCDIV  // Update value in global-params if changed
+#pragma config OSCIOFNC = OFF // enable pin 8,10
+#pragma config SOSCSRC = DIG // enable pin 9
+
 
 void main_init();
 
