@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     
     
     analog_init();
-    setup_analog(4);
+    setup_analog(14);
     
     int current_ir_val = 0;
     int prev_ir_val = 0;
@@ -41,20 +41,22 @@ int main(int argc, char **argv)
         // get all our info
         prev_ir_val = current_ir_val;
         
-        int ave = 0;
-        for(int i  = 0; i < 1000; i++)
+        double ave = 0;
+        for(int i  = 0; i < 100; i++)
         {
-            ave += read_analog(4);
+            ave += (double)read_analog_pin(8)/100;
         }
         
-        current_ir_val = ave/1000; // current val is an average of 1000 readings
+        current_ir_val = (int)ave; // current val is an average of 1000 readings
         
         // choose current state
         if(state == SEEKING)
         {
-            if(current_ir_val >= THRESHOLD && current_ir_val <= prev_ir_val) // if we're above our limit and decreasing
+            if(current_ir_val >= THRESHOLD && prev_ir_val >= current_ir_val) // if we're above our limit and decreasing
             {
                 DriveControl__stopMovement();
+                _LATB2 = 1;
+                state = FOUND;
             }
         }
         else if(state == FOUND)
@@ -62,6 +64,8 @@ int main(int argc, char **argv)
             if(current_ir_val < THRESHOLD) // if we lose track of the LED, then transition
             {
                 DriveControl__rotateCW(2*3.1415/8);
+                _LATB2 = 0;
+                state = SEEKING;
             }
         }
     }
