@@ -44,6 +44,7 @@ int MaxIRScan__poll()
 
 int MaxIRScan__checkIfVisible()
 {
+    MaxIRScan__poll();
     if (_MaxIRScan__curr_value > ANALOG_THRESHOLD)
     {
         return 1;
