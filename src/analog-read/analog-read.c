@@ -1,6 +1,6 @@
 #include "analog-read.h"
 
-void analog_init()
+void Analog__init()
 {
     /*** Select Voltage Reference Source ***/
     // use AVdd for positive reference
@@ -46,7 +46,7 @@ void analog_init()
     _ADON = 1;            // AD1CON1<15>
 }
 
-void setup_analog(int rgstr)
+void Analog__setup(int rgstr)
 {
 
 
@@ -147,7 +147,7 @@ void setup_analog(int rgstr)
 }
 
 // returns the analogue reading of a certain register
-int read_analog(int rgstr)
+int Analog__read(int rgstr)
 {
     int val = -1;
 
@@ -225,7 +225,7 @@ int read_analog(int rgstr)
 
 
 // returns the analogue reading of a certain pin
-int read_analog_pin(int pin)
+int Analog__readPin(int pin)
 {
     int val = -1;
 
