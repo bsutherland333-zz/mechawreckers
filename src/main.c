@@ -14,7 +14,7 @@ main.c -- the code that the robot executes
 #define THRESHOLD 500
 
 
-enum STATE {SEEKING,  FOUND}; // state in our state machine
+enum STATE {ON_LINE, RIGHT_OF_LINE, LEFT_OF_LINE, OFF_LINE_IR, OFF_LINE_NO_IR}; // state in our state machine
 
 
 void main_init();
