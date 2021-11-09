@@ -76,6 +76,12 @@ int main(int argc, char **argv)
                 
                 state = ON_LINE; // transition to left of line state 
             }
+            else if(0) // if side sensors are on and at least 1 forward sensor
+            {
+                DriveControl__stopMovement(); // stop all
+                
+                state = ON_CROSS;
+            }
         }
         else if(state == ON_LINE)
         {
@@ -100,6 +106,12 @@ int main(int argc, char **argv)
                 
                 state == OFF_LINE_NO_IR;
             }
+            else if(0) // if side sensors are on and at least 1 forward sensor
+            {
+                DriveControl__stopMovement(); // stop all
+                
+                state = ON_CROSS;
+            }
         }
         else if(state == RIGHT_OF_LINE)
         {
@@ -123,6 +135,12 @@ int main(int argc, char **argv)
                 DriveControl__rotateCCW(5); // begin to rotate left
                 
                 state = OFF_LINE_NO_IR; // transition to left of line state 
+            }
+            else if(0) // if side sensors are on and at least 1 forward sensor
+            {
+                DriveControl__stopMovement(); // stop all
+                
+                state = ON_CROSS;
             }            
         }
         else if(state == LEFT_OF_LINE)
@@ -147,11 +165,16 @@ int main(int argc, char **argv)
                 DriveControl__rotateCCW(5); // begin to rotate left
                 
                 state = OFF_LINE_NO_IR; // transition to left of line state 
-            }             
+            }
+            else if(0) // if side sensors are on and at least 1 forward sensor
+            {
+                DriveControl__stopMovement(); // stop all
+                
+                state = ON_CROSS;
+            }
         }
         else if(state == ON_CROSS) // the accept state
         {
-            DriveControl__stopMovement(); // stop the motors
             break; // accept the state machine and break the loop
         }
         
