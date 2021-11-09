@@ -26,11 +26,8 @@ int PicCom__getStatus();
 // send a tx flag
 void PicCom__sendFlag();
 
-// lowers tx flag
-void __lowerFlag();
-
-// raises tx flag
-void __raiseFlag();
+// raises/lowers tx flag
+void __changeFlag(int val);
 
 // checks for flag
 int __checkFlag();
