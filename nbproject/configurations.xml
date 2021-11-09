@@ -9,6 +9,7 @@
       <itemPath>src/pwm-control/pwm-control.h</itemPath>
       <itemPath>src/global-params.h</itemPath>
       <itemPath>src/analog-read/analog-read.h</itemPath>
+      <itemPath>src/pic-com.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,6 +23,7 @@
       <itemPath>src/pwm-control/pwm-control.c</itemPath>
       <itemPath>src/stepper-motor/stepper-motor.c</itemPath>
       <itemPath>src/analog-read/analog-read.c</itemPath>
+      <itemPath>src/pic-com.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
