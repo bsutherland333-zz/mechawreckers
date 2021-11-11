@@ -4,7 +4,6 @@ dev-main.c -- Main function for developmental purposes
 */
 
 #include <xc.h>
-#include "drive-control/drive-control.h"
 
 #pragma config FNOSC = FRCDIV  // Update value in global-params if changed
 #pragma config OSCIOFNC = OFF // enable pin 8,10
