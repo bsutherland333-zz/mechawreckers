@@ -14,9 +14,9 @@ This repo closely mimics the coding style found in this tutorial: https://www.co
 
 ## File Organization
 
-Write all code within the SRC directory.
+- Write all code within the SRC directory.
 
-To organize our code, please make files that group functions into categories based on their function. For example, any functions that drive stepper motors should be put in a file and folder that is seperate from functions that drive servos and so on. 
+- To organize our code, please make files that group functions into categories based on their function. For example, any functions that drive stepper motors should be put in a file and folder that is seperate from functions that drive servos and so on. 
 
 ## Compiling on MPLab IDE
 
