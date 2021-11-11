@@ -12,16 +12,16 @@
 
 // sets up analog pins
 
-void analog_init(); // configures the analog read register settings
+void Analog__init(); // configures the analog read register settings
 
-void setup_analog(int rgstr); // sets up an analog register
+void Analog__setup(int rgstr); // sets up an analog register
 
 
 // gives the current analog reading of a AN register
-int read_analog(int rgstr);
+int Analog__read(int rgstr);
 
 // gives the current analog reading of a particular pin
-int read_analog_pin(int pin);
+int Analog__readPin(int pin);
 
 
 #endif
