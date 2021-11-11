@@ -8,8 +8,8 @@ int _MaxIRScan__register = -1;
 
 void MaxIRScan__init(int analog_register)
 {
-    analog_init();
-    setup_analog(analog_register);
+    Analog__init();
+    Analog__setup(analog_register);
     _MaxIRScan__register = analog_register;
     MaxIRScan__reset();
 }
@@ -27,7 +27,7 @@ int MaxIRScan__poll()
     double average = 0;
     for(int i = 0; i < NUMBER_OF_SAMPLES; i++)
     {
-        average += (double)read_analog_pin(_MaxIRScan__register)/NUMBER_OF_SAMPLES;
+        average += (double)Analog__readPin(_MaxIRScan__register)/NUMBER_OF_SAMPLES;
     }
 
     _MaxIRScan__curr_value = (int)average;
