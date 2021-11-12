@@ -10,7 +10,11 @@
  *
  * NOTE: Motors will not run if the requested speed it too low.
  *
- * TODO: If someone gets bored they should switch this and its dependent code to use radians instead of rotations
+ * TODO: If someone gets bored they should switch this and its dependent code to use radians instead of rotations.
+ * TODO: This library currently sets the PWM parameters in the setSpeed function directly, it should be using the PWM
+ *  control library.
+ * TODO: This library has not been tested since the post-scalar has been changed. It should be fine, but a quick
+ *  verification would be good.
  */
 
 #ifndef STEPPER_MOTOR_H_
