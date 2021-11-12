@@ -1,11 +1,9 @@
 /* Mechawreckers    MEEN 330   Oct. 2021 2
 
-main.c -- the code that the robot executes
+turret-main.c -- Main function for robot turret
 */
 
 #include <xc.h>
-#include "analog-read/analog-read.h"
-#include "drive-control/drive-control.h"
 
 #pragma config FNOSC = FRCDIV  // Update value in global-params if changed
 #pragma config OSCIOFNC = OFF // enable pin 8,10
@@ -18,9 +16,7 @@ int main(int argc, char **argv)
 {
     main_init();
 
-    DriveControl__init();
-    DriveControl__rotateCW_dist(90, 180);
-    while (DriveControl__checkDriveStatus());
+
 
     return 0;
 }
