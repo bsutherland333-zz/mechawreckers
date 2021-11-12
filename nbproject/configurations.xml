@@ -12,6 +12,7 @@
       <itemPath>src/max-IR-scan/max-IR-scan.h</itemPath>
       <itemPath>src/servo-control/servo-control.h</itemPath>
       <itemPath>src/turret-control/turret-control.h</itemPath>
+      <itemPath>src/timer/timer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -30,6 +31,7 @@
       <itemPath>src/dev-main.c</itemPath>
       <itemPath>src/servo-control/servo-control.c</itemPath>
       <itemPath>src/turret-control/turret-control.c</itemPath>
+      <itemPath>src/timer/timer.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
