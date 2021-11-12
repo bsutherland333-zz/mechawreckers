@@ -25,23 +25,23 @@ int main(int argc, char **argv)
     main_init();
 
     DriveControl__init();
-    
-    
+
+
     analog_init();
-    
-    
+
+
     // begin state machine assuming no ir and off line
     int state = OFF_LINE_NO_IR;
     DriveControl__rotateCW(2*PI/15);
-    
+
     while(1)
     {
         // Read in QRD right
         // Read in QRD left
-        
+
         // set previous IR value as current value
         // set current IR value as average of n inputs
-        
+
         // Observe current state
         if(state == OFF_LINE_NO_IR)
         {
@@ -59,27 +59,27 @@ int main(int argc, char **argv)
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__turnRight(5,50); // begin to move forwards
-                
+
                 state = RIGHT_OF_LINE; // transition of right of line state
             }
             else if(0) // if LEFT QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__turnLeft(5,50); // begin to veer left
-                
-                state = LEFT_OF_LINE; // transition to left of line state 
+
+                state = LEFT_OF_LINE; // transition to left of line state
             }
             else if(0) // if Both QRD are on
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__driveForwards(5); // begin to move forwards
-                
-                state = ON_LINE; // transition to left of line state 
+
+                state = ON_LINE; // transition to left of line state
             }
             else if(0) // if side sensors are on and at least 1 forward sensor
             {
                 DriveControl__stopMovement(); // stop all
-                
+
                 state = ON_CROSS;
             }
         }
@@ -89,27 +89,27 @@ int main(int argc, char **argv)
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__turnRight(5,50); // begin to veer left
-                
-                state = LEFT_OF_LINE; // transition to left of line state 
+
+                state = LEFT_OF_LINE; // transition to left of line state
             }
             else if(0) // if LEFT QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__turnLeft(5,50); // begin to veer left
-                
-                state = RIGHT_OF_LINE; // transition to left of line state 
+
+                state = RIGHT_OF_LINE; // transition to left of line state
             }
             else if(0) // if Both QRD are off
             {
                 DriveControl__stopMovement();
                 DriveControl__rotateCW(2*PI/15); // begin to turn right to find the LED
-                
+
                 state == OFF_LINE_NO_IR;
             }
             else if(0) // if side sensors are on and at least 1 forward sensor
             {
                 DriveControl__stopMovement(); // stop all
-                
+
                 state = ON_CROSS;
             }
         }
@@ -119,57 +119,57 @@ int main(int argc, char **argv)
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__turnLeft(5,50); // begin to veer left
-                
-                state = LEFT_OF_LINE; // transition to left of line state 
+
+                state = LEFT_OF_LINE; // transition to left of line state
             }
             else if(0) // if Both QRD are on
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__driveForwards(5); // begin to go forward
-                
-                state = ON_LINE; // transition to left of line state 
+
+                state = ON_LINE; // transition to left of line state
             }
             else if(0) // if Both QRD are off
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__rotateCCW(5); // begin to rotate left
-                
-                state = OFF_LINE_NO_IR; // transition to left of line state 
+
+                state = OFF_LINE_NO_IR; // transition to left of line state
             }
             else if(0) // if side sensors are on and at least 1 forward sensor
             {
                 DriveControl__stopMovement(); // stop all
-                
+
                 state = ON_CROSS;
-            }            
+            }
         }
         else if(state == LEFT_OF_LINE)
         {
-             if(0) // if LEFT QRD is on
+            if(0) // if LEFT QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__turnRight(5,50); // begin to veer right
-                
-                state = RIGHT_OF_LINE; // transition to left of line state 
+
+                state = RIGHT_OF_LINE; // transition to left of line state
             }
             else if(0) // if Both QRD are on
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__driveForwards(5); // begin to go forward
-                
-                state = ON_LINE; // transition to left of line state 
+
+                state = ON_LINE; // transition to left of line state
             }
             else if(0) // if Both QRD are off
             {
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__rotateCCW(5); // begin to rotate left
-                
-                state = OFF_LINE_NO_IR; // transition to left of line state 
+
+                state = OFF_LINE_NO_IR; // transition to left of line state
             }
             else if(0) // if side sensors are on and at least 1 forward sensor
             {
                 DriveControl__stopMovement(); // stop all
-                
+
                 state = ON_CROSS;
             }
         }
@@ -177,9 +177,9 @@ int main(int argc, char **argv)
         {
             break; // accept the state machine and break the loop
         }
-        
+
     }
-    
+
     while(1) // STOP ALL
     {
         // do nothing

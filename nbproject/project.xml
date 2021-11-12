@@ -17,7 +17,15 @@
             </sourceRootList>
             <confList>
                 <confElem>
-                    <name>default</name>
+                    <name>dev_main</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>base_main</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>turret_main</name>
                     <type>2</type>
                 </confElem>
             </confList>

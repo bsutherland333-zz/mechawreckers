@@ -9,14 +9,14 @@ This repo closely mimics the coding style found in this tutorial: https://www.co
 - Functions are in camelCase. myFunction()
 - Classes are in UpperCamelCase. MyClass
 - Class items are appended to their associated class name with two underscores. MyClass__class_item
-- Private class items are denoted by a leading underscore _MyClass__class_item
-- Any preproccessor variables  should be defines in UPPERCASE.
+- Private class items are denoted by a leading underscore _MyClass__class_item. Class name can be omitted if desired (__class_item).
+- Any preprocessor variables should be defined in UPPERCASE.
 
 ## File Organization
 
-Write all code within the SRC directory.
+- Write all code within the SRC directory.
 
-To organize our code, please make files that group functions into categories based on their function. For example, any functions that drive stepper motors should be put in a file and folder that is seperate from functions that drive servos and so on. 
+- To organize our code, please make files that group functions into categories based on their function. For example, any functions that drive stepper motors should be put in a file and folder that is seperate from functions that drive servos and so on. 
 
 ## Compiling on MPLab IDE
 
