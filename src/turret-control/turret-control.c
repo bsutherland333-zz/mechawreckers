@@ -3,6 +3,7 @@
 #include "servo-control/servo-control.h"
 #include "pwm-control/pwm-control.h"
 #include "global-params.h"
+#include "timer/timer.h"
 
 #define MOTOR_FREQUENCY 1000.0
 
@@ -54,7 +55,8 @@ void __setMotorSpeed(float motor_speed)
 void TurretControl__activateTrigger()
 {
     __setTriggerFire();
-    Timer__wait(2.0);
+    Timer__set(1, 0.5);
+    Timer__waitForCompletion(1);
     __setTriggerLoad();
 }
 
