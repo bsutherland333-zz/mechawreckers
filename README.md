@@ -9,8 +9,8 @@ This repo closely mimics the coding style found in this tutorial: https://www.co
 - Functions are in camelCase. myFunction()
 - Classes are in UpperCamelCase. MyClass
 - Class items are appended to their associated class name with two underscores. MyClass__class_item
-- Private class items are denoted by a leading underscore _MyClass__class_item
-- Any preproccessor variables  should be defines in UPPERCASE.
+- Private class items are denoted by a leading underscore _MyClass__class_item. Class name can be omitted if desired (__class_item).
+- Any preprocessor variables should be defined in UPPERCASE.
 
 ## File Organization
 
