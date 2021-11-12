@@ -5,7 +5,7 @@ dev-main.c -- Main function for developmental purposes
 
 #include <xc.h>
 
-#pragma config FNOSC = FRCDIV  // Update value in global-params if changed
+#pragma config FNOSC = FRCDIV  // Update value in global-params.h if changed!!
 #pragma config OSCIOFNC = OFF // enable pin 8,10
 #pragma config SOSCSRC = DIG // enable pin 9
 
