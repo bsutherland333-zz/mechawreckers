@@ -20,4 +20,5 @@ This repo closely mimics the coding style found in this tutorial: https://www.co
 
 ## Compiling on MPLab IDE
 
-- The code on in this directory won't compile unless you include the src directory in your project path
+- There are three main functions in this codebase: dev-main, base-main, turret-main. To compile one, select the configuration in MPLAB with the same name, and that main function will be compiled and loaded onto the pic. 
+- Use each main function with its associated purpose.
