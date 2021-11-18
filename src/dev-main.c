@@ -196,4 +196,8 @@ void main_init()
     // Sets all pins to be digital
     ANSA = 0;
     ANSB = 0;
+
+    // Sets post scalar to 8
+    // Make sure to update value in global params if changed!!
+    _RCDIV = 0b011;
 }
