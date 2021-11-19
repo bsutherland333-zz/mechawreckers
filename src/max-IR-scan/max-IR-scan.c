@@ -27,7 +27,7 @@ int MaxIRScan__poll()
     double average = 0;
     for(int i = 0; i < NUMBER_OF_SAMPLES; i++)
     {
-        average += (double)Analog__readPin(_MaxIRScan__register)/NUMBER_OF_SAMPLES;
+        average += (double)Analog__read(_MaxIRScan__register)/NUMBER_OF_SAMPLES;
     }
 
     _MaxIRScan__curr_value = (int)average;
