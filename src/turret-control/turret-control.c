@@ -18,25 +18,25 @@ void TurretControl__setTurretPosition(int position)
     switch (position)
     {
         case 1:
-            ServoControl__setAngle(1, 0);
+            ServoControl__setAngle(1, 175);
             break;
         case 2:
             ServoControl__setAngle(1, 90);
             break;
         case 3:
-            ServoControl__setAngle(1, 180);
+            ServoControl__setAngle(1, 0);
             break;
     }
 }
 
 void TurretControl__setMotorSpeed_black()
 {
-    __setMotorSpeed(1.0);
+    __setMotorSpeed(0.47);
 }
 
 void TurretControl__setMotorSpeed_white()
 {
-    __setMotorSpeed(1.0);
+    __setMotorSpeed(0.55);
 }
 
 void TurretControl__disableMotor()
