@@ -12,7 +12,10 @@ main.c -- the code that the robot executes
 #pragma config OSCIOFNC = OFF // enable pin 8,10
 #pragma config SOSCSRC = DIG // enable pin 9
 
-#define THRESHOLD 500
+#define IR_THRESHOLD 500
+#define QRD_THRESHOLD 1000
+
+#define IR_SAMPLE_SIZE 100
 
 
 enum STATE {ON_LINE, RIGHT_OF_LINE, LEFT_OF_LINE, OFF_LINE_IR, OFF_LINE_NO_IR, ON_CROSS}; // state in our state machine
@@ -27,28 +30,62 @@ int main(int argc, char **argv)
     DriveControl__init();
     
     
-    analog_init();
+    Analog__init(); // initialize analog reading
     
+    Analog__setup(3); //setup up rear QRD
+    Analog__setup(4); // setup front right QRD
+    Analog__setup(13); // setup right QRD
+    Analog__setup(12); // setup front left QRD
+    Analog__setup(11); // setup left QRD
+    Analog__setup(10); // setup photodiode
+   
+    
+    // make sensor variables
+    int qrd_rear = 0;
+    int qrd_right = 0;
+    int qrd_left = 0;
+    int qrd_fright = 0;
+    int qrd_fleft = 0;
+    
+    int ir_curr = 0;
+    int ir_prev = 0;
     
     // begin state machine assuming no ir and off line
-    int state = OFF_LINE_NO_IR;
     DriveControl__rotateCW(2*PI/15);
+    int state = OFF_LINE_NO_IR;
+    
     
     while(1)
     {
-        // Read in QRD right
-        // Read in QRD left
+        //read QRD INPUTS
+        qrd_rear = Analog__read(3);
+        qrd_fright = Analog__read(4);
+        qrd_right = Analog__read(13);
+        qrd_fleft = Analog__read(12);
+        qrd_left = Analog__read(11);
         
         // set previous IR value as current value
+        ir_prev = ir_curr;
+        
         // set current IR value as average of n inputs
         
+        float ave = 0;
+        for(int i = 0; i <= IR_SAMPLE_SIZE; i++)
+        {
+            ave += Analog__read(10);
+        }
+        
+        ir_curr = (int)(ave / (float)IR_SAMPLE_SIZE);
+                
+                
+                
         // Observe current state
         if(state == OFF_LINE_NO_IR)
         {
-            if(current_ir_val >= THRESHOLD && prev_ir_val >= current_ir_val) // if we're above our limit and decreasing
+            if(ir_curr >= IR_THRESHOLD && ir_prev >= ir_curr) // if we're above our limit and decreasing
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__driveForwards(5); // begin to move forwards
+                DriveControl__driveForwards(10); // begin to move forwards
 
                 state = OFF_LINE_IR; // change state
             }
