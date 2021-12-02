@@ -4,7 +4,7 @@
 
 #include "global-params.h"
 
-void PWMControl__init1(int duty_cycle, int period)
+void PWMControl__init1(float duty_cycle, float period)
 {
     // CONFIGURE PWM1 USING OC1 (on pin 14)
 
@@ -48,7 +48,7 @@ void PWMControl__init1(int duty_cycle, int period)
     OC1CON1bits.OCM = 0b110;    // Edge-aligned PWM mode
 }
 
-void PWMControl__init2(int duty_cycle, int period)
+void PWMControl__init2(float duty_cycle, float period)
 {
     // CONFIGURE PWM2 USING OC2 (on pin 4)
     _TRISB0 = 1;
@@ -93,7 +93,7 @@ void PWMControl__init2(int duty_cycle, int period)
     OC2CON1bits.OCM = 0b110;    // Edge-aligned PWM mode
 }
 
-void PWMControl__init3(int duty_cycle, int period)
+void PWMControl__init3(float duty_cycle, float period)
 {
     // CONFIGURE PWM3 USING OC3 (on pin 5)
     _TRISB1 = 1;
