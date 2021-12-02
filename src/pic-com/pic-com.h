@@ -1,36 +1,23 @@
 /*  Mechawreckers  MEEN 330   Nov. 2021
- * 
+ *
  * pic-com.h -- a library that enables the communication of two PIC24's. This is
- * done using a binary signal flag going from on pic to another rather than a 
+ * done using a binary signal flag going from on pic to another rather than a
  * serial communication stream
  */
 
 
-#ifndef PIC_COM
-#define PIC_COM
+#ifndef PIC_COM_H_
+#define PIC_COM_H_
 
-#include<xc.h>
+#include <xc.h>
 
-int tx = 0;
-int rx = 0;
+// Initializes comm pin to be a digital input
+void PicCom__init(int pin);
 
-
-void PicCom__init(int tx_pin, int rx_pin);
-
-
-// checks the status of the rx flag. If the flag is up,
-// then lower the tx flag. 
+// Checks the status of the commPin
 int PicCom__getStatus();
 
-
-// send a tx flag
+// Send a flag over the commPin
 void PicCom__sendFlag();
-
-// raises/lowers tx flag
-void __changeFlag(int val);
-
-// checks for flag
-int __checkFlag();
-
 
 #endif
