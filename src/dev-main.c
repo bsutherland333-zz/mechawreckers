@@ -32,6 +32,15 @@ void ball_Getting_Machine();
 
 void centering_Machine();
 
+void delay(int s)
+{
+    int k = 0;
+    while(k < s)
+    {
+        k++;
+    }
+}
+
 int main(int argc, char **argv)
 {
     main_init();
