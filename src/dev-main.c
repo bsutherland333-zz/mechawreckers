@@ -7,6 +7,7 @@ main.c -- the code that the robot executes
 #include "global-params.h"
 #include "analog-read/analog-read.h"
 #include "drive-control/drive-control.h"
+#include "pic-com/pic-com.h"
 
 #pragma config FNOSC = FRCDIV  // Update value in global-params if changed
 #pragma config OSCIOFNC = OFF // enable pin 8,10
@@ -20,7 +21,7 @@ main.c -- the code that the robot executes
 
 //enum STATE {ON_LINE, RIGHT_OF_LINE, LEFT_OF_LINE, OFF_LINE_IR, OFF_LINE_NO_IR, ON_CROSS}; // state in our state machine
 
-enum STATE {LINE_FOLLOWING, GETTING_BALLS, CENTERING, SHOOTING};
+enum STATE {LINE_FOLLOWING, GETTING_BALLS, CENTERING, SHOOTING, RETURN_TO_GOAL};
 
 int state = LINE_FOLLOWING;
 
@@ -31,6 +32,8 @@ void line_Following_Machine();
 void ball_Getting_Machine();
 
 void centering_Machine();
+
+void shooting_Machine();
 
 void delay(int s)
 {
@@ -46,6 +49,8 @@ int main(int argc, char **argv)
     main_init();
 
     DriveControl__init();
+    
+    PicCom__init(18);
     
     
     Analog__init(); // initialize analog reading
@@ -72,6 +77,10 @@ int main(int argc, char **argv)
         else if(state == CENTERING)
         {
             centering_Machine();
+        }
+        else if(state == SHOOTING)
+        {
+            shooting_Machine();
         }
         
     }
@@ -286,7 +295,7 @@ void line_Following_Machine()
 
 void ball_Getting_Machine()
 {
-
+    // drive back, then forwards to get another ball
     DriveControl__driveBackwards_dist(10, 10);
     while(DriveControl__checkDriveStatus())
     {
@@ -300,7 +309,7 @@ void ball_Getting_Machine()
     {
     }
 
-    state = CENTERING;
+    state = CENTERING; // switch state to centering
 
 }
 
@@ -325,7 +334,7 @@ void centering_Machine()
     int sub_state = ON_LINE;
     
     
-        
+    // TEMP FIX  -- drive backwards until left and right qrd's detect the cross    
     while(!qrd_left && !qrd_left)
     {
         qrd_right = (Analog__read(13) >= QRD_THRESHOLD);
@@ -333,6 +342,7 @@ void centering_Machine()
         
     }
     
+    // TEMP FIX -- once cross is found, begin shooting
     DriveControl__stopMovement();
     state = SHOOTING;
     /* --- -------------- // TODO: Implement backwards line following
@@ -475,4 +485,15 @@ void centering_Machine()
     }
      * 
      */
+}
+
+void shooting_Machine()
+{
+    PicCom__sendFlag(); // send a flag to the turret
+    
+    while(!PicCom__getStatus()) // wait for a return signal
+    {
+    }
+    
+    state == RETURN_TO_GOAL;
 }
