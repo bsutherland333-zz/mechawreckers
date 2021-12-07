@@ -3,7 +3,8 @@
 #include "global-params.h"
 #include "drive-control.h"
 
-void DriveControl__init() {
+void DriveControl__init()
+{
     StepperMotor__init();
 }
 
@@ -13,17 +14,20 @@ void DriveControl__stopMovement()
     StepperMotor__stopMotion(2);
 }
 
-int DriveControl__checkDriveStatus() {
-    if (StepperMotor__checkMotorStatus(1) + StepperMotor__checkMotorStatus(2) == 0) {
+int DriveControl__checkDriveStatus()
+{
+    if (StepperMotor__checkMotorStatus(1) + StepperMotor__checkMotorStatus(2) == 0)
+    {
         return 0;
-    } else {
+    } else
+    {
         return 1;
     }
 }
 
 void DriveControl__driveForwards(float rate)
 {
-     // reset the stepper motors
+    // reset the stepper motors
 
     float w = 2 * rate / _DRIVECONTROL__WHEEL_DIAMETER; // find angular rate (radians/sec)
 
@@ -36,7 +40,7 @@ void DriveControl__driveForwards(float rate)
 
 void DriveControl__driveForwards_dist(float rate, float distance)
 {
-     // reset the stepper motors
+    // reset the stepper motors
 
     float w = 2 * rate / _DRIVECONTROL__WHEEL_DIAMETER; // find angular rate (radians/sec)
 
@@ -52,7 +56,7 @@ void DriveControl__driveForwards_dist(float rate, float distance)
 
 void DriveControl__driveBackwards(float rate)
 {
-     // reset the stepper motors
+    // reset the stepper motors
 
     float w = 2 * rate / _DRIVECONTROL__WHEEL_DIAMETER; // find angular rate (radians/sec)
 
@@ -65,7 +69,7 @@ void DriveControl__driveBackwards(float rate)
 
 void DriveControl__driveBackwards_dist(float rate, float distance)
 {
-     // reset the stepper motors
+    // reset the stepper motors
 
     float w = 2 * rate / _DRIVECONTROL__WHEEL_DIAMETER; // find angular rate (radians/sec)
 
@@ -148,7 +152,7 @@ void DriveControl__turnRight(float rate, float radius)
         return;
     }
 
-     // reset steppers
+    // reset steppers
 
     // find the speed of the right motor
     float right_rps = (rate * (radius - _DRIVECONTROL__WHEEL_DISTANCE / 2.0)) /
@@ -174,7 +178,7 @@ void DriveControl__backRight(float rate, float radius)
         return;
     }
 
-     // reset steppers
+    // reset steppers
 
     // find the speed of the right motor
     float right_rps = (rate * (radius - _DRIVECONTROL__WHEEL_DISTANCE / 2.0)) /
@@ -199,7 +203,7 @@ void DriveControl__turnRight_dist(float rate, float radius, float angle)
         return;
     }
 
-     // reset steppers
+    // reset steppers
 
     // find the speed of the right motor
     float right_rps = (rate * (radius - _DRIVECONTROL__WHEEL_DISTANCE / 2.0)) /
@@ -232,7 +236,7 @@ void DriveControl__turnLeft(float rate, float radius)
         return;
     }
 
-     // reset steppers
+    // reset steppers
 
     // find the speed of the right motor
     float right_rps = (rate * (radius + _DRIVECONTROL__WHEEL_DISTANCE / 2.0)) /
@@ -258,7 +262,7 @@ void DriveControl__backLeft(float rate, float radius)
         return;
     }
 
-     // reset steppers
+    // reset steppers
 
     // find the speed of the right motor
     float right_rps = (rate * (radius + _DRIVECONTROL__WHEEL_DISTANCE / 2.0)) /
@@ -284,7 +288,7 @@ void DriveControl__turnLeft_dist(float rate, float radius, float angle)
         return;
     }
 
-     // reset steppers
+    // reset steppers
 
     // find the speed of the right motor
     float right_rps = (rate * (radius + _DRIVECONTROL__WHEEL_DISTANCE / 2.0)) /

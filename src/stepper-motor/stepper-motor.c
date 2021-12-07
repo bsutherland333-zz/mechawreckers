@@ -33,7 +33,8 @@ void StepperMotor__stopMotion(int motor)
     }
 }
 
-int StepperMotor__checkMotorStatus(int motor) {
+int StepperMotor__checkMotorStatus(int motor)
+{
     int status = 1;
 
     switch (motor)

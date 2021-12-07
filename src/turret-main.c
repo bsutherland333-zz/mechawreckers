@@ -37,7 +37,8 @@ int main(int argc, char **argv)
     Timer__set(1, 1);
     Timer__waitForCompletion(1);
 
-    while (1) {
+    while (1)
+    {
         switch (currState)
         {
             case WAITING_FOR_COMMAND:
@@ -52,14 +53,17 @@ int main(int argc, char **argv)
                 break;
             case SEARCH_AND_FIRE:
                 // Turn till valid goal is found
-                while (1) {
+                while (1)
+                {
                     // Position 1
                     TurretControl__setTurretPosition(1);
                     Timer__set(1, 0.9);
                     Timer__waitForCompletion(1);
-                    if ((ballColor == BLACK) && MaxIRScan__checkIfVisible()) {
+                    if ((ballColor == BLACK) && MaxIRScan__checkIfVisible())
+                    {
                         break;
-                    } else if ((ballColor == WHITE) && !MaxIRScan__checkIfVisible()) {
+                    } else if ((ballColor == WHITE) && !MaxIRScan__checkIfVisible())
+                    {
                         break;
                     }
 
@@ -67,9 +71,11 @@ int main(int argc, char **argv)
                     TurretControl__setTurretPosition(2);
                     Timer__set(1, 0.5);
                     Timer__waitForCompletion(1);
-                    if ((ballColor == BLACK) && MaxIRScan__checkIfVisible()) {
+                    if ((ballColor == BLACK) && MaxIRScan__checkIfVisible())
+                    {
                         break;
-                    } else if ((ballColor == WHITE) && !MaxIRScan__checkIfVisible()) {
+                    } else if ((ballColor == WHITE) && !MaxIRScan__checkIfVisible())
+                    {
                         break;
                     }
 
@@ -77,9 +83,11 @@ int main(int argc, char **argv)
                     TurretControl__setTurretPosition(3);
                     Timer__set(1, 0.5);
                     Timer__waitForCompletion(1);
-                    if ((ballColor == BLACK) && MaxIRScan__checkIfVisible()) {
+                    if ((ballColor == BLACK) && MaxIRScan__checkIfVisible())
+                    {
                         break;
-                    } else if ((ballColor == WHITE) && !MaxIRScan__checkIfVisible()) {
+                    } else if ((ballColor == WHITE) && !MaxIRScan__checkIfVisible())
+                    {
                         break;
                     }
                 }
@@ -88,9 +96,11 @@ int main(int argc, char **argv)
                 Timer__waitForCompletion(2);
 
                 // Verify that the current goal is still valid
-                if ((ballColor == BLACK) && !MaxIRScan__checkIfVisible()) {
+                if ((ballColor == BLACK) && !MaxIRScan__checkIfVisible())
+                {
                     break;
-                } else if ((ballColor == WHITE) && MaxIRScan__checkIfVisible()) {
+                } else if ((ballColor == WHITE) && MaxIRScan__checkIfVisible())
+                {
                     break;
                 }
 
@@ -106,7 +116,8 @@ int main(int argc, char **argv)
                 break;
             case CHECK_BALL_STATUS:
                 // Prepare turret to enter waiting state
-                if (fireCount == 2) {
+                if (fireCount == 2)
+                {
                     currState = SENDING_COMMAND;
                     fireCount = 0;
                     TurretControl__disableMotor();
@@ -115,9 +126,11 @@ int main(int argc, char **argv)
                 }
 
                 // Check and update ball color
-                if (Analog__read(0) > 2000) {
+                if (Analog__read(0) > 2000)
+                {
                     ballColor = BLACK;
-                } else {
+                } else
+                {
                     ballColor = WHITE;
                 }
 
@@ -125,8 +138,7 @@ int main(int argc, char **argv)
                 if (ballColor == WHITE)
                 {
                     TurretControl__setMotorSpeed_white();
-                }
-                else
+                } else
                 {
                     TurretControl__setMotorSpeed_black();
                 }
@@ -138,8 +150,6 @@ int main(int argc, char **argv)
                 break;
         }
     }
-
-
 
 
     return 0;

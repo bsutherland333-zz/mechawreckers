@@ -25,18 +25,17 @@ int MaxIRScan__poll()
     _MaxIRScan__previous_value = _MaxIRScan__curr_value;
 
     double average = 0;
-    for(int i = 0; i < NUMBER_OF_SAMPLES; i++)
+    for (int i = 0; i < NUMBER_OF_SAMPLES; i++)
     {
-        average += (double)Analog__read(_MaxIRScan__register)/NUMBER_OF_SAMPLES;
+        average += (double) Analog__read(_MaxIRScan__register) / NUMBER_OF_SAMPLES;
     }
 
-    _MaxIRScan__curr_value = (int)average;
+    _MaxIRScan__curr_value = (int) average;
 
-    if(_MaxIRScan__curr_value >= ANALOG_THRESHOLD && _MaxIRScan__previous_value >= _MaxIRScan__curr_value)
+    if (_MaxIRScan__curr_value >= ANALOG_THRESHOLD && _MaxIRScan__previous_value >= _MaxIRScan__curr_value)
     {
         return 1;
-    }
-    else
+    } else
     {
         return 0;
     }
@@ -48,8 +47,7 @@ int MaxIRScan__checkIfVisible()
     if (_MaxIRScan__curr_value > ANALOG_THRESHOLD)
     {
         return 1;
-    }
-    else
+    } else
     {
         return 0;
     }
