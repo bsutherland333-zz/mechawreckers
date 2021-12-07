@@ -9,7 +9,7 @@
 
 void TurretControl__init()
 {
-    TurretControl__setTurretPosition(2);
+    TurretControl__setTurretPosition(1);
     __setTriggerLoad();
 }
 
@@ -18,10 +18,10 @@ void TurretControl__setTurretPosition(int position)
     switch (position)
     {
         case 1:
-            ServoControl__setAngle(1, 175);
+            ServoControl__setAngle(1, 90);
             break;
         case 2:
-            ServoControl__setAngle(1, 90);
+            ServoControl__setAngle(1, 180);
             break;
         case 3:
             ServoControl__setAngle(1, 0);
