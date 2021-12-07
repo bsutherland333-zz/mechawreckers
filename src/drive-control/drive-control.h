@@ -82,6 +82,17 @@ void DriveControl__turnRight(float rate, float radius);
 void DriveControl__turnLeft(float rate, float radius);
 
 
+// turns the robot backwards and right about a radius equal to the wheel distances at a rate
+// rate -- cm/second down the center line
+// radius -- cm
+void DriveControl__backRight(float rate, float radius);
+
+// turns the robot backwards and left about a radius equal to the wheel distances at a rate
+// rate -- cm/second down the center line
+// radius -- cm
+void DriveControl__backLeft(float rate, float radius);
+
+
 // turns the robot right about a radius
 // inputs :
 // rate -- cm/second down the center line
