@@ -25,7 +25,7 @@ main.c -- the code that the robot executes
 
 enum STATE {LINE_FOLLOWING, GETTING_BALLS, CENTERING, SHOOTING, RETURN_TO_GOAL};
 
-int state = CENTERING;
+int state = LINE_FOLLOWING;
 
 void main_init();
 
