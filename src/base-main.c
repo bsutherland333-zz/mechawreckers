@@ -273,7 +273,7 @@ void centering_Machine()
     while (DriveControl__checkDriveStatus());
 
     // Turn around
-    DriveControl__rotateCW_dist(120, 170);
+    DriveControl__rotateCW_dist(120, 165);
     while (DriveControl__checkDriveStatus());
 
     // Spin until line is found again
@@ -289,7 +289,7 @@ void centering_Machine()
     returning_Machine();
 
     // Robot on center, turn back around
-    DriveControl__rotateCW_dist(120, 170);
+    DriveControl__rotateCW_dist(120, 165);
     while (DriveControl__checkDriveStatus());
 
     // Spin until line is found again
