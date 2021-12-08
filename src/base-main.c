@@ -71,7 +71,7 @@ int main(int argc, char **argv)
         {
             shooting_Machine();
             state == RETURN_TO_GOAL;
-        } else if (state == RETURN_TO_GOAL)
+        } else if (state = RETURN_TO_GOAL)
         {
             returning_Machine();
             state = GETTING_BALLS;
