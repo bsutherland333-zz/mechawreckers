@@ -14,6 +14,10 @@ main.c -- the code that the robot executes
 #pragma config OSCIOFNC = OFF // enable pin 8,10
 #pragma config SOSCSRC = DIG // enable pin 9
 
+// disable watchdog timer
+#pragma config FWDTEN = OFF
+#pragma config WINDIS = OFF
+
 #define IR_THRESHOLD 400
 #define QRD_THRESHOLD 350
 
