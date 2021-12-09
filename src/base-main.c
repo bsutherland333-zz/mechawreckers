@@ -18,15 +18,15 @@ main.c -- the code that the robot executes
 #pragma config FWDTEN = OFF
 #pragma config WINDIS = OFF
 
-#define IR_THRESHOLD 400
+#define IR_THRESHOLD 200
 #define IR_AT_CROSS 200
 #define QRD_THRESHOLD 350
 
-#define IR_SAMPLE_SIZE 50
+#define IR_SAMPLE_SIZE 70
 
 #define DRIVE_SPEED 30
 #define ROTATE_SPEED 120
-#define IR_SEARCH_SPEED 75
+#define IR_SEARCH_SPEED 50
 
 
 enum STATE {LINE_FOLLOWING, GETTING_BALLS, CENTERING, SHOOTING, RETURN_TO_GOAL};
@@ -54,7 +54,7 @@ int main(int argc, char **argv)
     Analog__setup(11); // setup left QRD
     Analog__setup(10); // setup photodiode
 
-    
+
     while (1)
     {
         if (state == LINE_FOLLOWING)
@@ -114,7 +114,7 @@ void line_Following_Machine()
     DriveControl__rotateCW(IR_SEARCH_SPEED);
     int sub_state = OFF_LINE_NO_IR;
 
-    Timer__set(1, 1.5);
+    Timer__set(1, 1);
 
     while (1)
     {
@@ -144,7 +144,7 @@ void line_Following_Machine()
                 (ir_prev >= ir_curr || qrd_fright || qrd_fleft)) // if we're above our limit and decreasing
             {
 
-                Timer__set(1, 1.5);
+                Timer__set(1, 1);
                 DriveControl__stopMovement(); // stop the robot
                 DriveControl__driveForwards(DRIVE_SPEED); // begin to move forwards
                 sub_state = OFF_LINE_IR; // change state
@@ -156,13 +156,13 @@ void line_Following_Machine()
             if (qrd_fright && !qrd_fleft) // if RIGHT QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnLeft(DRIVE_SPEED, 75); // begin to move forwards
+                DriveControl__turnLeft(DRIVE_SPEED, 50); // begin to move forwards
 
                 sub_state = RIGHT_OF_LINE; // transition of right of line state
             } else if (!qrd_fright && qrd_fleft) // if LEFT QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnRight(DRIVE_SPEED, 75); // begin to veer left
+                DriveControl__turnRight(DRIVE_SPEED, 50); // begin to veer left
 
                 sub_state = LEFT_OF_LINE; // transition to left of line state
             } else if (qrd_fright && qrd_fleft) // if Both QRD are on
@@ -175,13 +175,13 @@ void line_Following_Machine()
             if (qrd_fright && !qrd_fleft) // if RIGHT QRD is on we are left of the line
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnRight(DRIVE_SPEED, 75); // begin to veer left
+                DriveControl__turnRight(DRIVE_SPEED, 50); // begin to veer left
 
                 sub_state = LEFT_OF_LINE; // transition to left of line state
             } else if (!qrd_fright && qrd_fleft) // if LEFT QRD is on we are right of the line
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnLeft(DRIVE_SPEED, 75); // begin to veer left
+                DriveControl__turnLeft(DRIVE_SPEED, 50); // begin to veer left
 
                 sub_state = RIGHT_OF_LINE; // transition to left of line state
             } else if (!qrd_fright && !qrd_fleft) // if Both QRD are off
@@ -202,7 +202,7 @@ void line_Following_Machine()
             if (qrd_fright && !qrd_fleft) // if left QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnRight(DRIVE_SPEED, 75); // begin to veer left
+                DriveControl__turnRight(DRIVE_SPEED, 50); // begin to veer left
 
                 sub_state = LEFT_OF_LINE; // transition to left of line state
             } else if (qrd_fright && qrd_fleft) // if Both QRD are on
@@ -229,7 +229,7 @@ void line_Following_Machine()
             if (!qrd_fright && qrd_fleft) // if LEFT QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnLeft(DRIVE_SPEED, 75); // begin to veer right
+                DriveControl__turnLeft(DRIVE_SPEED, 50); // begin to veer right
 
                 sub_state = RIGHT_OF_LINE; // transition to left of line state
             } else if (qrd_fright && qrd_fleft) // if Both QRD are on
@@ -262,9 +262,9 @@ void line_Following_Machine()
 void ball_Getting_Machine()
 {
     // drive back, then forwards to get another ball
-    DriveControl__driveBackwards_dist(20, 10);
+    DriveControl__driveBackwards_dist(20, 8);
     while (DriveControl__checkDriveStatus());
-    DriveControl__driveForwards_dist(20, 10);
+    DriveControl__driveForwards_dist(20, 8);
     while (DriveControl__checkDriveStatus());
 }
 
@@ -306,16 +306,15 @@ void centering_Machine()
 
 void shooting_Machine()
 {
-    
+
     int ir = Analog__read(10);
-    
+
     while(ir >= IR_AT_CROSS)
     {
         ir = Analog__read(10);
     }
-    
+
     PicCom__sendFlag(); // send a flag to the turret
-    
     while (!PicCom__getStatus()); // wait for a return signal
 }
 
@@ -334,7 +333,7 @@ void returning_Machine()
     DriveControl__driveForwards(DRIVE_SPEED);
     int sub_state = OFF_LINE;
 
-    Timer__set(1, 1.5);
+    Timer__set(1, 1);
 
     while (1)
     {
@@ -350,13 +349,13 @@ void returning_Machine()
             if (qrd_fright && !qrd_fleft) // if RIGHT QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnLeft(DRIVE_SPEED, 75); // begin to move forwards
+                DriveControl__turnLeft(DRIVE_SPEED, 50); // begin to move forwards
 
                 sub_state = RIGHT_OF_LINE; // transition of right of line state
             } else if (!qrd_fright && qrd_fleft) // if LEFT QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnRight(DRIVE_SPEED, 75); // begin to veer left
+                DriveControl__turnRight(DRIVE_SPEED, 50); // begin to veer left
 
                 sub_state = LEFT_OF_LINE; // transition to left of line state
             } else if (qrd_fright && qrd_fleft) // if Both QRD are on
@@ -369,13 +368,13 @@ void returning_Machine()
             if (qrd_fright && !qrd_fleft) // if RIGHT QRD is on we are left of the line
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnRight(DRIVE_SPEED, 75); // begin to veer left
+                DriveControl__turnRight(DRIVE_SPEED, 50); // begin to veer left
 
                 sub_state = LEFT_OF_LINE; // transition to left of line state
             } else if (!qrd_fright && qrd_fleft) // if LEFT QRD is on we are right of the line
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnLeft(DRIVE_SPEED, 75); // begin to veer left
+                DriveControl__turnLeft(DRIVE_SPEED, 50); // begin to veer left
 
                 sub_state = RIGHT_OF_LINE; // transition to left of line state
             } else if (!qrd_fright && !qrd_fleft) // if Both QRD are off
@@ -396,7 +395,7 @@ void returning_Machine()
             if (qrd_fright && !qrd_fleft) // if left QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnRight(DRIVE_SPEED, 75); // begin to veer left
+                DriveControl__turnRight(DRIVE_SPEED, 50); // begin to veer left
 
                 sub_state = LEFT_OF_LINE; // transition to left of line state
             } else if (qrd_fright && qrd_fleft) // if Both QRD are on
@@ -423,7 +422,7 @@ void returning_Machine()
             if (!qrd_fright && qrd_fleft) // if LEFT QRD is on
             {
                 DriveControl__stopMovement(); // stop the robot
-                DriveControl__turnLeft(DRIVE_SPEED, 75); // begin to veer right
+                DriveControl__turnLeft(DRIVE_SPEED, 50); // begin to veer right
 
                 sub_state = RIGHT_OF_LINE; // transition to left of line state
             } else if (qrd_fright && qrd_fleft) // if Both QRD are on

@@ -5,7 +5,7 @@
 
 // Values for scanning
 #define NUMBER_OF_SAMPLES 100
-#define ANALOG_THRESHOLD 500
+#define ANALOG_THRESHOLD 200
 
 // Initialization function must be run before class is used
 void MaxIRScan__init(int analog_register);
