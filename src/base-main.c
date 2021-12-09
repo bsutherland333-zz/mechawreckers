@@ -19,6 +19,7 @@ main.c -- the code that the robot executes
 #pragma config WINDIS = OFF
 
 #define IR_THRESHOLD 400
+#define IR_AT_CROSS 200
 #define QRD_THRESHOLD 350
 
 #define IR_SAMPLE_SIZE 50
@@ -53,6 +54,7 @@ int main(int argc, char **argv)
     Analog__setup(11); // setup left QRD
     Analog__setup(10); // setup photodiode
 
+    
     while (1)
     {
         if (state == LINE_FOLLOWING)
@@ -304,7 +306,16 @@ void centering_Machine()
 
 void shooting_Machine()
 {
+    
+    int ir = Analog__read(10);
+    
+    while(ir >= IR_AT_CROSS)
+    {
+        ir = Analog__read(10);
+    }
+    
     PicCom__sendFlag(); // send a flag to the turret
+    
     while (!PicCom__getStatus()); // wait for a return signal
 }
 

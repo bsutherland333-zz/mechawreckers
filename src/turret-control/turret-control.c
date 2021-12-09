@@ -24,7 +24,7 @@ void TurretControl__setTurretPosition(int position)
             ServoControl__setAngle(1, 172);
             break;
         case 3:
-            ServoControl__setAngle(1, -2);
+            ServoControl__setAngle(1, -4);
             break;
     }
 }
@@ -36,7 +36,7 @@ void TurretControl__setMotorSpeed_black()
 
 void TurretControl__setMotorSpeed_white()
 {
-    __setMotorSpeed(0.55);
+    __setMotorSpeed(0.62);
 }
 
 void TurretControl__disableMotor()
