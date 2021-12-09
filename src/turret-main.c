@@ -101,6 +101,8 @@ int main(int argc, char **argv)
                 
                 if(fireCount == 1 && ballCheck() == ballColor)
                 {
+                    Timer__set(1, 1.5);
+                    Timer__waitForCompletion(1);
                     TurretControl__activateTrigger();
                     fireCount++;
                 }
